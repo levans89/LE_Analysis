@@ -14,7 +14,7 @@ col_names = {'PlateID','Well','Comment'};
 bad_wells = cell(1,3);
 bad_wells = cell2table(bad_wells,'VariableNames',col_names); % make table ready for writing to
 
-for x = 1: size(plates.plate_name,1)
+for x = 1: size(plates.expt_plate,1)
     try
         bad_QC = importfile(char(fullfile(qc_folder,strcat(plates.expt_plate(x),'.xlsx'))),'BADWELLS','B2:Y17'); % import QC files marking BADWELLS and FLUODRUGS from qc_folder
         bad_QC = logical(cell2mat(bad_QC));% find wells containing 1 (positive)

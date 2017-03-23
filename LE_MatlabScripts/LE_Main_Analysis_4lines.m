@@ -1,42 +1,45 @@
+% Louise Evans March 2017
+% Purpose: Perform analogous analysis to Charles' NBT paper for 4lines
+% experiment x Selleck 2K set 'pORACL' determination.
 %% Set paths
-%restoredefaultpath;
-addpath(genpath('W:/Lab_Analysis/common/plate_annotation'))
-addpath(genpath('W:\2015_09_HTS_LE\Code\CD_Tag_Drug_Screen'))
-save_destination = 'W:\2015_09_HTS_LE\data\profiles';% place to save profiles to
-results_folder = 'W:\2015_09_HTS_LE\results\matlab_results\4lines';
-profile_folder = 'W:\2015_09_HTS_LE\data\profiles';% place to load profiles from
-load('currexp.mat');% load in currexp.mat which details all plates in this screen (extracted from exp_DB)
-currexp.CellLine = categorical(currexp.CellLine);
-currexp.batch = categorical(currexp.batch);
-qc_folder = 'W:/2015_09_HTS_LE/QC/4lines/';
+%====Environment setup====%
+addpath(genpath('W:\Lab_Analysis\common\plate_annotation')) %plate annotation from labtoolbox
+addpath(genpath('W:\2015_09_HTS_LE\Code\CD_Tag_Drug_Screen')) % Charles code for NBT paper containing useful functions
+addpath(genpath('W:\2015_09_HTS_LE\Code\LE_analysis')) % Louise code afer cluster operations
+addpath(genpath('W:\2015_09_HTS_LE\Code\LE_Preprocessing')) % Louise code before cluster operations
+profiles_folder = 'W:\2015_09_HTS_LE\data\profiles';% place to save profiles to and load from
+qc_folder = 'W:\2015_09_HTS_LE\QC\4lines\';% store any QC analysis Python, Matlab, or manual
+results_folder = 'W:\2015_09_HTS_LE\results\matlab_results\4lines'; % Louise results for 4lines analysis
+load('W:\2015_09_HTS_LE\data\currexp.mat');% load in currexp.mat which details all plates in this screen (extracted from exp_DB)
+currexp.CellLine = categorical(currexp.CellLine); %categorical to select by cell line later
+currexp.batch = categorical(currexp.batch); % categorical to select by batch (1-8) later
 
 %% Profile a batch of plates Charles
-%%% Set parameters %%%
-pORACL = 'NQO1'; % we screened 4 lines - here we switch profile generation between the lines to deal with marker encoding in feature names
+%====Set parameters and enable switching between cell lines "pORACLs"====%
+pORACL = 'XRCC5'; % we screened 4 lines - here we switch profile generation between the lines to deal with marker encoding in feature names
 switch pORACL %potential ORACL
-    case 'NQO1'
-        features_to_use = feature_selector('NBT_NQO1'); %{'all'};%Get_Default_Features('LE_147_to_150_fixed');
-        plates = currexp(currexp.CellLine=='A549_NQO1' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:);
-        plateIDs = plates.expt_plate;
-        bad_wells = LE_Bad_Wells(plates,qc_folder); % Get all bad wells
-        writetable(bad_wells,'W:\2015_09_HTS_LE\QC\4lines\bw_NQO1.xlsx');
-        
-        for m = 1:height(plates)
-            plate_maps{m} = [num2str(plates.expt_plate{m}),'.xlsx'];
+    case 'NQO1' % S \ _Alice method
+        features_to_use = feature_selector('NBT_NQO1'); %{'all'};%Get_Default_Features(); % different for cell lines as plate annotation encodes reporter name in feature
+        plates = currexp(currexp.CellLine=='A549_NQO1' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:); %select cell line, exclude dud batches
+        plateIDs = plates.expt_plate; % extract plate IDs
+        bad_wells = LE_Bad_Wells(plates,qc_folder); % Get all bad wells from per-plate manual Excel annotation
+        writetable(bad_wells,'W:\2015_09_HTS_LE\QC\4lines\bw_NQO1.xlsx'); % write to a single file can therefore choose not to use later
+        plate_maps = cell(height(plates),1); % preallocate
+        for m = 1:height(plates) % for all plates in this cell line
+            plate_maps{m} = [num2str(plates.expt_plate{m}),'.xlsx']; % find the platemap name
         end
-        plate_types = plates.plate_type;
-        paras = Set_Paras();
-        plate_maps_foler = paras.path.plate_maps;
-        
-        h = waitbar(0,num2str(0));
-        for p = 1:length(plateIDs)
-            waitbar(p/length(plateIDs),h,[num2str(p),'/',num2str(length(plateIDs))])
+        plate_types = plates.plate_type; % assign the plate type e.g. reference_plate, screen_plate
+        paras = Set_Paras(); % set parameters (path,bioactive,screen,cluster)
+        plate_maps_folder = paras.path.plate_maps; % where to find plate maps
+        h = waitbar(0,num2str(0)); % display waitbar
+        for p = 1:length(plateIDs) % for all plates 
+            waitbar(p\length(plateIDs),h,[num2str(p),'\',num2str(length(plateIDs))]) % change the waitbar
             
             % 1. Get all inputs for Get_KS_Profiles
-            plateID = plateIDs{p};
-            plate_type = plate_types{p};
-            plate_map_file = [plate_maps_foler filesep plate_maps{p}];
-            plate_layout = Read_Plate_Annotation(plate_map_file);
+            plateID = plateIDs{p};% ID
+            plate_type = plate_types{p}; % e.g. reference_plate 
+            plate_map_file = [plate_maps_folder filesep plate_maps{p}]; % expt plate file
+            plate_layout = Read_Plate_Annotation(plate_map_file); % read in expt plate file
             
             % 2. Gather information for profiling
             well_names = {plate_layout.wellData.wellName}';
@@ -91,35 +94,34 @@ switch pORACL %potential ORACL
             Get_KS_Profiles(plateID, plate_type, well_names, drug_names, drug_categories, concentrations,...
                 dose, clone_names, cas, targets, pathways, descriptions, ...
                 is_ks_ctrl, cpd_usage, paras,...
-                'save_destination',save_destination,'features_to_use',features_to_use);
+                'save_destination',profiles_folder,'features_to_use',features_to_use);
             
         end
-        waitbar(p/length(plateIDs),h,'Done')
+        waitbar(p\length(plateIDs),h,'Done')
         delete(h)
       
-    case 'XRCC5'%%% S / _Alice method
-        features_to_use = feature_selector('NBT_XRCC5'); %{'all'};%Get_Default_Features('LE_147_to_150_fixed');
+    case 'XRCC5'% S \ _Alice method
+        features_to_use = feature_selector('NBT_XRCC5');
         plates = currexp(currexp.CellLine=='A549_XRCC5' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:);
         plateIDs = plates.expt_plate;
-        bad_wells = LE_Bad_Wells(plates,qc_folder); % Get all bad wells
-        writetable(bad_wells,'W:\2015_09_HTS_LE\QC\4lines\bw_XRCC5.xlsx');
-        
+        bad_wells = LE_Bad_Wells(plates,qc_folder);
+        %writetable(bad_wells,'W:\2015_09_HTS_LE\QC\4lines\bw_XRCC5.xlsx');
+        plate_maps = cell(height(plates),1);
         for m = 1:height(plates)
             plate_maps{m} = [num2str(plates.expt_plate{m}),'.xlsx'];
         end
         plate_types = plates.plate_type;
         paras = Set_Paras();
         paras.path.features = ['features' filesep 'cbfeatures_Alice' filesep 'cbfeatures-']; % switch feature folder here to get S method
-        plate_maps_foler = paras.path.plate_maps;
-        
+        plate_maps_folder = paras.path.plate_maps;
         h = waitbar(0,num2str(0));
         for p = 2:length(plateIDs)
-            waitbar(p/length(plateIDs),h,[num2str(p),'/',num2str(length(plateIDs))])
+            waitbar(p\length(plateIDs),h,[num2str(p),'\',num2str(length(plateIDs))])
             
             % 1. Get all inputs for Get_KS_Profiles
             plateID = plateIDs{p};
             plate_type = plate_types{p};
-            plate_map_file = [plate_maps_foler filesep plate_maps{p}];
+            plate_map_file = [plate_maps_folder filesep plate_maps{p}];
             plate_layout = Read_Plate_Annotation(plate_map_file);
             
             % 2. Gather information for profiling
@@ -176,34 +178,33 @@ switch pORACL %potential ORACL
             Get_KS_Profiles(plateID, plate_type, well_names, drug_names, drug_categories, concentrations,...
                 dose, clone_names, cas, targets, pathways, descriptions, ...
                 is_ks_ctrl, cpd_usage, paras,...
-                'save_destination',save_destination,'features_to_use',features_to_use);
+                'save_destination',profiles_folder,'features_to_use',features_to_use);
             
         end
-        waitbar(p/length(plateIDs),h,'Done')
+        waitbar(p\length(plateIDs),h,'Done')
         delete(h)
         
     case 'SET'
-        features_to_use = feature_selector('NBT_SET'); %{'all'};%Get_Default_Features('LE_147_to_150_fixed');
+        features_to_use = feature_selector('NBT_SET');
         plates = currexp(currexp.CellLine=='A549_SET' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:);
         plateIDs = plates.expt_plate;
-        bad_wells = LE_Bad_Wells(plates,qc_folder); % Get all bad wells
+        bad_wells = LE_Bad_Wells(plates,qc_folder);
         writetable(bad_wells,'W:\2015_09_HTS_LE\QC\4lines\bw_SET.xlsx');
-        
+        plate_maps = cell(height(plates),1);
         for m = 1:height(plates)
             plate_maps{m} = [num2str(plates.expt_plate{m}),'.xlsx'];
         end
         plate_types = plates.plate_type;
         paras = Set_Paras();
-        plate_maps_foler = paras.path.plate_maps;
-        
+        plate_maps_folder = paras.path.plate_maps;
         h = waitbar(0,num2str(0));
         for p = 1:length(plateIDs)
-            waitbar(p/length(plateIDs),h,[num2str(p),'/',num2str(length(plateIDs))])
+            waitbar(p\length(plateIDs),h,[num2str(p),'\',num2str(length(plateIDs))])
             
             % 1. Get all inputs for Get_KS_Profiles
             plateID = plateIDs{p};
             plate_type = plate_types{p};
-            plate_map_file = [plate_maps_foler filesep plate_maps{p}];
+            plate_map_file = [plate_maps_folder filesep plate_maps{p}];
             plate_layout = Read_Plate_Annotation(plate_map_file);
             
             % 2. Gather information for profiling
@@ -259,34 +260,33 @@ switch pORACL %potential ORACL
             Get_KS_Profiles(plateID, plate_type, well_names, drug_names, drug_categories, concentrations,...
                 dose, clone_names, cas, targets, pathways, descriptions, ...
                 is_ks_ctrl, cpd_usage, paras,...
-                'save_destination',save_destination,'features_to_use',features_to_use);
+                'save_destination',profiles_folder,'features_to_use',features_to_use);
             
         end
-        waitbar(p/length(plateIDs),h,'Done')
+        waitbar(p\length(plateIDs),h,'Done')
         delete(h)
         
-    case 'S100A11'
-        features_to_use = feature_selector('NBT_S100A11'); %{'all'};%Get_Default_Features('LE_147_to_150_fixed');
+    case 'S100A11' % S \ _Alice method
+        features_to_use = feature_selector('NBT_S100A11');
         plates = currexp(currexp.CellLine=='A549_S100A11' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:);
         plateIDs = plates.expt_plate;
-        bad_wells = LE_Bad_Wells(plates,qc_folder); % Get all bad wells
+        bad_wells = LE_Bad_Wells(plates,qc_folder);
         writetable(bad_wells,'W:\2015_09_HTS_LE\QC\4lines\bw_S100A11.xlsx');
-        
+        plate_maps = cell(height(plates),1);
         for m = 1:height(plates)
             plate_maps{m} = [num2str(plates.expt_plate{m}),'.xlsx'];
         end
         plate_types = plates.plate_type;
         paras = Set_Paras();
-        plate_maps_foler = paras.path.plate_maps;
-        
+        plate_maps_folder = paras.path.plate_maps;
         h = waitbar(0,num2str(0));
         for p = 1:length(plateIDs)
-            waitbar(p/length(plateIDs),h,[num2str(p),'/',num2str(length(plateIDs))])
+            waitbar(p\length(plateIDs),h,[num2str(p),'\',num2str(length(plateIDs))])
             
             % 1. Get all inputs for Get_KS_Profiles
             plateID = plateIDs{p};
             plate_type = plate_types{p};
-            plate_map_file = [plate_maps_foler filesep plate_maps{p}];
+            plate_map_file = [plate_maps_folder filesep plate_maps{p}];
             plate_layout = Read_Plate_Annotation(plate_map_file);
             
             % 2. Gather information for profiling
@@ -342,100 +342,101 @@ switch pORACL %potential ORACL
             Get_KS_Profiles(plateID, plate_type, well_names, drug_names, drug_categories, concentrations,...
                 dose, clone_names, cas, targets, pathways, descriptions, ...
                 is_ks_ctrl, cpd_usage, paras,...
-                'save_destination',save_destination,'features_to_use',features_to_use);
+                'save_destination',profiles_folder,'features_to_use',features_to_use);
             
         end
-        waitbar(p/length(plateIDs),h,'Done')
+        waitbar(p\length(plateIDs),h,'Done')
         delete(h)
 end
+
 %% Check cell number
-clc
-cd ('W:\2015_09_HTS_LE\QC\4lines\')
-for b = 55:132
+%====Generate heatmaps of cell number for all plates to check for pattern====%
+cd ('W:\2015_09_HTS_LE\QC\4lines\') % move to the location to do all the saving in 
+for b = 55:132 %plate IDs last 3 digits
 pid = [b]; % first check blanks, ref plates, compound plates
 plateIDs = arrayfun(@(x)sprintf('2017018%03d',x),pid,'unif',false)'; %appears that only reference plates can be checked but not true
-try
-plate = Load_Batch(plateIDs,profile_folder); 
-Show_Cell_Number(plate);
-saveas(gcf,plateIDs{1,1},'bmp');
+try % in case missing
+plate = Load_Batch(plateIDs,profile_folder); % load plate 
+Show_Cell_Number(plate); % generate heatmap of cell number
+saveas(gcf,plateIDs{1,1},'bmp'); % save
 catch    
 end
 end
-close all
-cd ('W:\2015_09_HTS_LE\Code\')
-%pp = Plate2PhysicalPlate(plate);% Convert a plate from a column-oriented data format to a physical plate format.
-%% Visualize plates
+close all % close all the figures
+cd ('W:\2015_09_HTS_LE\Code\') % move back
+
+%% Visualize plates and specify bioactives
 % Specify parameters
-time_to_use     = 1;
-merge_method    = 'concatenate'; % 'concatenate' | 'pool'
+time_to_use     = 1; % only T48 here 
+merge_method    = 'concatenate'; % 'concatenate' | 'pool' % doesnt matter only 1 timepoint
 pVal_thr        = 10^-6; % p-value threshold bioactivity
-plot_opt_reference = {'cate_to_show',{'DMSO','Actin','AuroraB','DNA','ER','HDAC','HSP90','MT','PLK','Proteasome','mTOR'}};
+HCSparas = Set_Paras('pVal_thr',pVal_thr); % set parameteres
+
+% Specify plot options
 [targets,pathways, compound_IDs]=getselleckpathways();
 uniquepathways = table2cell(unique(pathways));
 plot_opt_query = {'cate_to_show',uniquepathways'};
-HCSparas = Set_Paras('pVal_thr',pVal_thr);
+plot_opt_reference = {'cate_to_show',{'DMSO','Actin','AuroraB','DNA','ER','HDAC','HSP90','MT','PLK','Proteasome','mTOR'}};
+plot_opt_DMSO = {'cate_to_show',{'DMSO'}};
 
-% to_use = (~strcmp(plate.cpd_usage,'')|strcmp(plate.pathways,'Apoptosis'));
-% plate = Select_Rows(plate,to_use);
-
+% Select cell line to analyze
 pORACL = 'NQO1'
-switch pORALC
+switch pORACL
     case 'NQO1'
-        HCSparas.path.features = 'features\cbfeatures\cbfeatures_-'
-        plates = currexp(currexp.CellLine=='A549_NQO1' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:);
+        HCSparas.path.features = 'features\cbfeatures\cbfeatures_-';
+        plates = currexp(currexp.CellLine=='A549_NQO1' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:); % remove dud batches
         plate_IDs = plates.expt_plate;
-        plate = Load_Batch(plate_IDs,profile_folder);
+        plate = Load_Batch(plate_IDs,profiles_folder);
         plate2 = Merge_Time_Points(plate,time_to_use,merge_method);
         [plate2,plate3] = Get_Bioactive_Compounds(plate2, HCSparas);
         is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
-        plate3.drug_categories(is_inactive) = {'Nonbioactive'};
-        Visualize_Plate(plate3,plot_opt_reference{:}) % or plot_opt_query
+        plate3.drug_categories(is_inactive) = {'Nonbioactive'}; % not using Nonbioactive to do the PCA.
+        Visualize_Plate(plate3,plot_opt_DMSO{:}); % or plot_opt_query
         NQO1_bioactive = Plate2Table(plate3);
-        writetable(NQO1_bioactive, fullfile(results_folder,'NQO1_bioactive.xlsx'))
+        writetable(NQO1_bioactive, fullfile(results_folder,'NQO1_bioactive2.xlsx'))
         
     case 'XRCC5'
-        HCSparas.path.features = 'features\cbfeatures\cbfeatures_Alice-' % XRCC5
+        HCSparas.path.features = 'features\cbfeatures\cbfeatures_Alice-'; % XRCC5 has different location for S in this case
         currexp.cpd_plate_1 = categorical(currexp.cpd_plate_1);
         plates = currexp(currexp.CellLine=='A549_XRCC5' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7' & currexp.cpd_plate_1~='ECHO REFERENCE',:);
         plate_IDs = plates.expt_plate;
-        plate = Load_Batch(plate_IDs,profile_folder);
+        plate = Load_Batch(plate_IDs,profiles_folder);
         plate2 = Merge_Time_Points(plate,time_to_use,merge_method);
         [plate2,plate3] = Get_Bioactive_Compounds(plate2, HCSparas);
         is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
         plate3.drug_categories(is_inactive) = {'Nonbioactive'};
-        Visualize_Plate(plate3,plot_opt_reference{:})
+        Visualize_Plate(plate3,plot_opt_DMSO{:});
         XRCC5_bioactive = Plate2Table(plate3);
-        writetable(XRCC5_bioactive, fullfile(results_folder,'XRCC5_bioactive.xlsx'));
+        writetable(XRCC5_bioactive, fullfile(results_folder,'XRCC5_bioactive2.xlsx'));
         
     case 'SET'
         HCSparas.path.features = 'features\cbfeatures\cbfeatures_-'
         plates = currexp(currexp.CellLine=='A549_SET' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:);
         plate_IDs = plates.expt_plate;
-        plate = Load_Batch(plate_IDs,profile_folder);
+        plate = Load_Batch(plate_IDs,profiles_folder);
         plate2 = Merge_Time_Points(plate,time_to_use,merge_method);
         [plate2,plate3] = Get_Bioactive_Compounds(plate2, HCSparas);
         is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
         plate3.drug_categories(is_inactive) = {'Nonbioactive'};
-        Visualize_Plate(plate3,plot_opt_reference{:})
+        Visualize_Plate(plate3,plot_opt_DMSO{:});
         SET_bioactive = Plate2Table(plate3);
-        writetable(SET_bioactive, fullfile(results_folder,'SET_bioactive.xlsx'))
+        writetable(SET_bioactive, fullfile(results_folder,'SET_bioactive2.xlsx'))
         
     case 'S100A11'
         HCSparas.path.features = 'features\cbfeatures\cbfeatures_-'
         plates = currexp(currexp.CellLine=='A549_S100A11' & currexp.batch~='4L2K_8' & currexp.batch~='4L2K_7',:);
         plate_IDs = plates.expt_plate;
-        plate = Load_Batch(plate_IDs,profile_folder);
+        plate = Load_Batch(plate_IDs,profiles_folder);
         plate2 = Merge_Time_Points(plate,time_to_use,merge_method);
         [plate2,plate3] = Get_Bioactive_Compounds(plate2, HCSparas);
         is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
         plate3.drug_categories(is_inactive) = {'Nonbioactive'};
-        Visualize_Plate(plate3,plot_opt_reference{:})
+        Visualize_Plate(plate3,plot_opt_DMSO{:});
         S100A11_bioactive = Plate2Table(plate3);
-        writetable(S100A11_bioactive, fullfile(results_folder,'S100A11_bioactive.xlsx'))
+        writetable(S100A11_bioactive, fullfile(results_folder,'S100A11_bioactive2.xlsx'))
         
 end
 %% Cross validation for reference plates
-% clc
 % Specify parameters
 %pid                 = [59]; % plate ID, last 2 digits
 time_to_use         = 1:2;
@@ -497,6 +498,7 @@ HCSparas = Set_Paras('pVal_thr',pVal_thr,'classifier_type',classifier_type,...
 plateIDs = arrayfun(@(x)sprintf('2017018%03d',x),pids,'unif',false)'; 
 plate = Load_Batch(plateIDs,profile_folder);
 predict_output = Screen_Plates( plate, HCSparas);
+
 %% Clustering
 pids=[];
 batches = {arrayfun(@(x)sprintf('2017018%03d',x),pids,'unif',false)'};
