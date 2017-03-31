@@ -4,7 +4,8 @@
 Selleck = SelleckBioactivesSMDC384wellmapping;%rename
 %% extract info
 Selleck.PLATE_384 = categorical(Selleck.PLATE_384);%assign categorical variable
-targets = cell2table(Selleck.Target);
-pathways = cell2table(Selleck.Pathway);
-compound_IDs = cell2table(unique(Selleck.Compound_ID));
+targets = cell2table(Selleck.Target, 'VariableNames',{'Target'});
+pathways = cell2table(Selleck.Pathway, 'VariableNames',{'Pathway'});
+compound_IDs = cell2table(Selleck.Compound_ID, 'VariableNames',{'drug_names'});
+compound_IDs = horzcat(compound_IDs,targets,pathways);
  end
