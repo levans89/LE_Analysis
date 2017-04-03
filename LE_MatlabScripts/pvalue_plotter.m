@@ -41,7 +41,8 @@ percents.Properties.RowNames{2}='Selleck 2K';
 display(percents)
 %writetable(percents,fullfile(results_folder,'percents.xlsx'))
 
-% reshaping and get all into one table
+%% reshaping and get all into one table
+
 compound_IDs.Properties.VariableNames{1} = 'drug_names';
 bioactives = outerjoin(compound_IDs, SET_b_query(:,[4,7]), 'Type','Left');
 bioactives.Properties.VariableNames{1} = 'drug_names';
@@ -53,7 +54,7 @@ bioactives = outerjoin(bioactives, XRCC5_b_query(:,[4,7]),'Type','Left');
 bioactives.Properties.VariableNames{1} = 'drug_names';
 bioactives(:,{'drug_names_right','drug_names_right_1','drug_names_right_2','drug_names_right_3'}) = [];
 
-% Plot P Values for Query Compounds 2K Selleck
+% Line Plot P Values for Query Compounds 2K Selleck 
 bioactives = sortrows(bioactives,'S100A11_bioactive_pVals','descend');
 figure()
 plot(bioactives.S100A11_bioactive_pVals,'LineWidth',1)
@@ -70,11 +71,11 @@ ylabel('P Value');
 set(gca,'YScale','log')
 xlim([1 1835])
 ylim([10E-19 1])
-saveas(gca,fullfile(results_folder,'PVALS_QUERY'))
-print('-f1',fullfile(results_folder,'PVALS_QUERY'),'-dpng','-r500');
+%saveas(gca,fullfile(results_folder,'PVALS_QUERY'))
+%print('-f1',fullfile(results_folder,'PVALS_QUERY'),'-dpng','-r500');
 close all
 
-% Plot P Values for all Compounds across the dataset
+%% Plot P Values for all Compounds across the dataset
 figure()
 hold on
 
@@ -96,11 +97,13 @@ ylabel('P Value');
 set(gca,'YScale','log')
 xlim([1 max(endrows)])
 ylim([10E-19 1])
-saveas(gca,fullfile(results_folder,'PVALS_ALL'))
-print('-f1',fullfile(results_folder,'PVALS_ALL'),'-dpng','-r500');
+%saveas(gca,fullfile(results_folder,'PVALS_ALL'))
+%print('-f1',fullfile(results_folder,'PVALS_ALL'),'-dpng','-r500');
 close all
 
-% Plot P Values per Plate
+%% Plot P Values per Plate
+close all
+% Select pORACL
 pORACL = 'A549_NQO1';
 plateIDs = currexp(currexp.CellLine == pORACL & currexp.batch ~= '4L2K_7' & currexp.batch ~= '4L2K_8',:);
 batched = horzcat(plateIDs.expt_plate,plateIDs.batch,plateIDs.plate_type);
@@ -168,22 +171,23 @@ xlabel('Compound')
 ylabel('P Value')
 hold off
     
-% plot log p value by pathways
+%% plot log p value by pathways
+close all
 bioactives = sortrows(bioactives,'drug_names','ascend'); % reset for consistent figures
 
 bioactives = sortrows(bioactives,{'Pathway','Target'},{'ascend','ascend'});
 bioactives1 = bioactives{:,4:7};
 bioactives1(isnan(bioactives1))=1; %A(isnan(A)) = 0
-LE_heatmap_pvalues(bioactives1,'Sort by Pathway, Target','P Value');
-saveas(gca,fullfile(results_folder,'PValues_PathwayTarget'));
-print('-f1',fullfile(results_folder,'PValues_PathwayTarget'),'-dpng','-r500');
-close all
+%LE_heatmap_pvalues(bioactives1,'Sort by Pathway, Target','P Value');
+%saveas(gca,fullfile(results_folder,'PValues_PathwayTarget'));
+%print('-f1',fullfile(results_folder,'PValues_PathwayTarget'),'-dpng','-r500');
+%close all
 
 bioactives2 = log(bioactives1);
 LE_heatmap_pvalues(bioactives2,'Sort by Pathway,Target','Log P Values');
-saveas(gca,fullfile(results_folder,'LogPValues_PathwayTarget'));
-print('-f1',fullfile(results_folder,'LogPValues_PathwayTarget'),'-dpng','-r500');
-close all
+%saveas(gca,fullfile(results_folder,'LogPValues_PathwayTarget'));
+%print('-f1',fullfile(results_folder,'LogPValues_PathwayTarget'),'-dpng','-r500');
+%close all
 
 
 bioactives = sortrows(bioactives,'drug_names','ascend'); % reset for consistent figures
@@ -193,13 +197,32 @@ bioactives = sortrows(bioactives,{'Pathway','XRCC5_bioactive_pVals','NQO1_bioact
 bioactives3 = bioactives{:,4:7};
 bioactives3(isnan(bioactives3))=1;
 bioactives4 = log(bioactives3);
-LE_heatmap_pvalues(bioactives3,'Sort by Pathway, XRCC5','P Values')
-saveas(gca,fullfile(results_folder,'PValues_PathwayXRCC5'))
-print('-f1',fullfile(results_folder,'PValues_PathwayXRCC5'),'-dpng','-r500');
-close all
+%LE_heatmap_pvalues(bioactives3,'Sort by Pathway, XRCC5','P Values')
+%saveas(gca,fullfile(results_folder,'PValues_PathwayXRCC5'))
+%print('-f1',fullfile(results_folder,'PValues_PathwayXRCC5'),'-dpng','-r500');
+%close all
 LE_heatmap_pvalues(bioactives4,'Sort by Pathway, XRCC5','Log P Values');
-saveas(gca,fullfile(results_folder,'LogPValues_PathwayXRCC5'))
-print('-f1',fullfile(results_folder,'LogPValues_PathwayXRCC5'),'-dpng','-r500');
+%saveas(gca,fullfile(results_folder,'LogPValues_PathwayXRCC5'))
+%print('-f1',fullfile(results_folder,'LogPValues_PathwayXRCC5'),'-dpng','-r500');
+%close all
+
+bioactives = sortrows(bioactives,'drug_names','ascend'); % reset for consistent figures
+bioactives = sortrows(bioactives,{'XRCC5_bioactive_pVals','Pathway','NQO1_bioactive_pVals','SET_bioactive_pVals',...
+    'S100A11_bioactive_pVals'},...
+    {'ascend','ascend','ascend','ascend','ascend'});
+bioactives5 = bioactives{:,4:7};
+bioactives5(isnan(bioactives5))=1;
+bioactives6 = log(bioactives5);
+%LE_heatmap_pvalues(bioactives5,'Sort by Pathway, XRCC5','P Values')
+%saveas(gca,fullfile(results_folder,'PValues_PathwayXRCC5'))
+%print('-f1',fullfile(results_folder,'PValues_PathwayXRCC5'),'-dpng','-r500');
+%close all
+LE_heatmap_pvalues(bioactives6,'Sort by XRCC5, Pathway, pORACLs','Log P Values');
+saveas(gca,fullfile(results_folder,'LogPValues_XRCC5Pathway'))
+print('-f1',fullfile(results_folder,'LogPValues_XRCC5Pathway'),'-dpng','-r500');
 close all
+
+
+
 
 clear bioactives1 bioactives2 bioactives3 bioactives4 bioactives5 bioactives6

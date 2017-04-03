@@ -1,4 +1,11 @@
  function [targets, pathways, compound_IDs]=getselleckpathways()
+ % Louise Heinrich 2017.04.04 in Altschuler and Wu Laboratories
+ 
+ % [targets, pathways, compound_IDs]=getselleckpathways()
+ % uses import_compoundplates to import the Selleck 2K library raw data
+ % file
+ % outputs targets, pathways, compound_IDs as tables 
+ 
 [SelleckBioactivesSMDC384wellmapping] = import_compoundplates;
 %% change names
 Selleck = SelleckBioactivesSMDC384wellmapping;%rename
