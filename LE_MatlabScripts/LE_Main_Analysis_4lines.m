@@ -466,11 +466,11 @@ getplotoptions() % standard plot options
 %plot_opt_query= {'cate_to_show',{'DMSO'}}% example
 
 % Select subset of data to analyze
-subset = 'all'; % 'query' % 'all' % 'reference'
+subset = 'reference'; % 'query' % 'all' % 'reference'
 switch subset
     case 'reference'
         plot_opt = plot_opt_reference;
-        for c = 1:4
+        for c = 41:4
             pORACL = pORACLs{c};
             plates = currexp(currexp.CellLine== strcat('A549_',pORACL) & currexp.plate_type == 'reference_plate',:); % select plateset %plates = currexp(currexp.CellLine== pORACL & currexp.plate_type == 'reference_plate',:);
             plate_IDs = plates.expt_plate;
@@ -486,7 +486,7 @@ switch subset
             %fullfile(results_folder,strcat(pORACL,'_bioactivepvalsR.xlsx')))
             clear bioactive wellcounts
             
-            Visualize_Plate_LE(plate3,plot_opt{:}); % or plot_opt_query - % can only use con_trace with just reference plates
+            Visualize_Plate_LE(plate3,plot_opt{:},'use_mode','con_trace'); % or plot_opt_query - % can only use con_trace with just reference plates
             labelpcplot()
             title=(strcat(pORACL,subset));
             saveas(gcf,strcat('../results/matlab_results/4lines/',pORACL,subset))
@@ -582,6 +582,7 @@ SET_bioactive=bioactives_importfile('W:\2015_09_HTS_LE\results\matlab_results\4l
 S100A11_bioactive=bioactives_importfile('W:\2015_09_HTS_LE\results\matlab_results\4lines\S100A11_bioactivepvals.xlsx',1,2,endrows(3,1));
 XRCC5_bioactive = bioactives_importfile('W:\2015_09_HTS_LE\results\matlab_results\4lines\XRCC5_bioactivepvals.xlsx',1,2,endrows(4,1));
 [targets, pathways, compound_IDs]=getselleckpathways();
+
 %pvalue_plotter % plot P values by cell line, and by batch
 
 %% Classification Accuracy
@@ -603,7 +604,7 @@ aw_ref = {'DMSO','Actin','AuroraB','DNA','ER','HDAC','HSP90','MT','PLK','Proteas
 ref_plate = {'reference_plate'};
 
 % Calculate classification accuracy for reference plates 
-pORACL = 'S100A11'; % 'XRCC5' 'NQO1' 'SET' 'S100A11' 'XRCC5_RB'
+pORACL = 'XRCC5_RB'; % 'XRCC5' 'NQO1' 'SET' 'S100A11' 'XRCC5_RB'
 
 switch pORACL
     case 'NQO1'
@@ -737,7 +738,7 @@ switch pORACL
         XRCC5_classifier_RB.scan_scheme = scan_scheme;
 end
 
-% Save classifier results
+%% Save classifier results
 classifier.XRCC5 = XRCC5_classifier;
 classifier.SET = SET_classifier;
 classifier.S100A11 = S100A11_classifier;
@@ -751,9 +752,10 @@ Accuracies = [CellLine accuracies];
 Accuracies.Properties.VariableNames{1} = 'CellLine';
 Accuracies.Properties.VariableNames{2} = 'Accuracy';
 Accuracies = sortrows(Accuracies,'Accuracy','descend');
-writetable(Accuracies,fullfile(results_folder,'Accuracies.xlsx')) % HOW TO GET SD??? CURRENTLY NEED TO MANUALLY SAVE - COME BACK TO THIS
+%writetable(Accuracies,fullfile(results_folder,'Accuracies.xlsx')) % HOW TO GET SD??? CURRENTLY NEED TO MANUALLY SAVE - COME BACK TO THIS
 
-%% Visualize the FDA space 
+%% Visualize the FDA space % Need to switch case over lines here before ready to analyze
+
 plate_fda = plate2; 
 plate_fda.profiles = cellfun(@clfy_obj.KLFDA_proj_fun,plate2.profiles,'unif',false);
          getplotoptions; Visualize_Plate(plate_fda,plot_opt_reference{:});
@@ -769,22 +771,41 @@ HCSparas = Set_Paras('pVal_thr',pVal_thr,'classifier_type',classifier_type,...
 % Predict Output
 predict_output = Screen_Plates(plate, HCSparas);
 %% Clustering
+%Specify parameters
+time_to_use         = 1;
+merge_mode          = 'concatenate'; % 'concatenate' | 'pool'
+pVal_thr            = 10^-6; % p-value threshold for calling bioactive compounds
+classifier_type     = 'KLFDA_knn'; % 'KLFDA_knn' | 'KLFDA_nearest_centroid' % means use KNN on LDA space
+NumNeighbors        = 1; % Number of neighbors for knn classifier, only be used for KLFDA_knn
+FDA_type            = 0; % 0: FDA, -1: no transformation, -2: RCA
+g                   = 0:0.1:1; % regularization strength for within-class variance
+kernel_type         = 'linear'; % linear rbf polynomial
+kernel_para         = 0; % no effect if using linear kernel
+kfold               = 10;
+paras = Set_Paras('pVal_thr',pVal_thr);
+g = 0:0.05:0.5; % regularization strength for within-class variance
+classifier_paras    = {'NumNeighbors',1}; % e.g. 'NumNeighbors',5
+
+HCSparas = Set_Paras('pVal_thr',pVal_thr,'classifier_type',classifier_type,...
+    'FDA_type',FDA_type,'gamma',g,'kernel_type',kernel_type,'kernel_para',kernel_para,...
+    'classifier_paras',classifier_paras,'kfold',kfold);
+
 
 plates = currexp(currexp.CellLine=='A549_XRCC5',:);
 plate_IDs = plates.expt_plate;
 batches{1,1} = plate_IDs;
 
-plates = currexp(currexp.CellLine=='A549_SET',:);
-plate_IDs = plates.expt_plate;
-batches{2,1} = plate_IDs;
-
-plates = currexp(currexp.CellLine=='A549_S100A11',:);
-plate_IDs = plates.expt_plate;
-batches{3,1} = plate_IDs;
-
-plates = currexp(currexp.CellLine=='A549_NQO1',:);
-plate_IDs = plates.expt_plate;
-batches{4,1} = plate_IDs;
+% plates = currexp(currexp.CellLine=='A549_SET',:);
+% plate_IDs = plates.expt_plate;
+% batches{2,1} = plate_IDs;
+% 
+% plates = currexp(currexp.CellLine=='A549_S100A11',:);
+% plate_IDs = plates.expt_plate;
+% batches{3,1} = plate_IDs;
+% 
+% plates = currexp(currexp.CellLine=='A549_NQO1',:);
+% plate_IDs = plates.expt_plate;
+% batches{4,1} = plate_IDs;
 
 % Set parameters
 FDA_type            = -1; % 0: FDA, -1: no transformation, -2: RCA
@@ -832,31 +853,14 @@ for b = 1:Nbatches
 end
 disp('Done')
 
-%% Visualize clusters
-batch_to_plot = 4;
-clusters_to_color = [];%[13,38,80,83,86,87];
-if isempty(clusters_to_color)
-    %------ get all significant clusters ------%
-    sig_thr = 0.05;
-    sig_clusters = unique(cluster_info{batch_to_plot}.Cluster(...
-        cluster_info{batch_to_plot}.Significance<sig_thr));
-    %------ get DMSO cluster(s) ------%
-    [m,n,g] = grpstats(strcmp(cluster_info{batch_to_plot}.drug_categories,'DMSO'),...
-        cluster_info{batch_to_plot}.Cluster,{'mean','numel','gname'});
-    % DMSO cluster must contain more than 10 compounds and more than 50% of
-    % them are DMSO
-    dmso_cluster = str2double(g( (m>0.5) & (n>10) ));
-    % color all significant clusters and DMSO cluster(s)
-    clusters_to_color = [sig_clusters(:);dmso_cluster(:)];
-end
-PlotPhylogeneticTree(cluster_info{batch_to_plot},tree{batch_to_plot},clusters_to_color);
+
 %% Analysis of clusters
 fh = figure;
 for i = 1:length(cluster_info)
     ref_cluster(i).categories = unique(cluster_info{i}.drug_categories);
     ref_cluster(i).cluster_ID = unique(cluster_info{i}.Cluster);
-    
     ref_cluster(i).stat = zeros(length(ref_cluster(i).categories),length(ref_cluster(i).cluster_ID));
+   
     for j = 1:size(ref_cluster(i).stat,1)
         is_class = strcmpi(cluster_info{i}.drug_categories,ref_cluster(i).categories{j});
         tb = tabulate(cluster_info{i}.Cluster(is_class));
@@ -867,13 +871,71 @@ for i = 1:length(cluster_info)
     
     ax(i) = subplot(1,1,i,'Parent',fh);
     
-    imagesc(ax(i),ref_cluster(i).stat),colormap(ax(i),'gray'),caxis(ax(i),[0,50])
     
+    imagesc(ref_cluster(i).stat),colormap(ax(i),hot),caxis(ax(i),[0,50])
     ax(i).YTick = 1:length(ref_cluster(i).categories);
     ax(i).YTickLabel = ref_cluster(i).categories;
     ax(i).TickLabelInterpreter = 'none';
     
-    %     ax(i).XTick = 1:length(ref_cluster(i).cluster_ID);
-    %     ax(i).XTickLabel = GN_con;
-    title=(num2str(i));
 end
+
+% Louise Percents
+[targets, pathways, compound_IDs]=getselleckpathways();
+pathways.Pathway = categorical(pathways.Pathway);
+pathwaysize = tabulate(pathways.Pathway)
+
+for i = 1:length(cluster_info)
+  query_cluster(i).categories = pathwaysize(:,1)
+  query_cluster(i).cluster_ID = unique(cluster_info{i}.Cluster);
+  query_cluster(i).stat = zeros(length(query_cluster(i).categories),length(query_cluster(i).cluster_ID));
+  for j = 1:size(query_cluster(i).stat,1)
+        is_class = strcmpi(cluster_info{i}.drug_categories,query_cluster(i).categories{j});
+        tb = tabulate(cluster_info{i}.Cluster(is_class));
+        
+        [is_in,loc] = ismember(tb(:,1),query_cluster(i).cluster_ID);
+        query_cluster(i).stat(j,loc(is_in)) = tb(:,2);
+  end
+end    
+
+
+ref_cluster.categories2 = cell2table(ref_cluster.categories)
+ref_cluster.counts2 = cell2table(tabulate(cluster_info{1}.drug_categories))
+ref_cluster.drugcounts = join(ref_cluster.categories2,ref_cluster.counts2)
+ref_cluster.clustercounts=tabulate(cluster_info{1}.Cluster)
+
+
+
+drugcounts = table2array(ref_cluster.drugcounts(:,2))
+drugcounts = repmat(drugcounts,1,117)
+x = ref_cluster.stat./drugcounts
+
+clustercounts = ref_cluster.clustercounts(:,2)';
+clustercounts = repmat(clustercounts,32,1);
+y = ref_cluster.stat./clustercounts
+
+
+
+x_ax = x(:)
+y_ax = y(:)
+
+% scatter(x_ax,y_ax)
+i =1;
+
+fh = figure;
+ax(i) = subplot(1,1,i,'Parent',fh)
+
+imagesc(x)
+colormap(ax(i),'hot')
+colorbar(ax(i))
+ax(i).YTick = 1:length(ref_cluster(i).categories);
+ax(i).YTickLabel = ref_cluster(i).categories;
+ax(i).TickLabelInterpreter = 'none';
+
+xlabel('Cluster #')
+ylabel('Compound Category (Pathway)')
+title('Percentage Drugs in a Compound Category Appearing in each Cluster')    
+
+print('-f1','XRCC5clusterper','-dpng','-r500')
+    
+    close all
+    
