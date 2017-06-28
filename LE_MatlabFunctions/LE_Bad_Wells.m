@@ -8,8 +8,7 @@ function bad_wells = LE_Bad_Wells(plates, qc_folder)
 % qc_folder = 'W:/2015_09_HTS_LE/QC/4lines/'
 % Louise Evans 2017.03.13 (modified from Chien-Hsiang Hsu Bad_Wells.m)
 
-platemap = txt_importfile('W:/2015_09_HTS_LE/Code/platemap_384.xlsx', 'WELLS', 'B2:Y17'); % standard layout of plate with wellname
-
+load('platemap.mat');
 col_names = {'PlateID','Well','Comment'};
 bad_wells = cell(1,3);
 bad_wells = cell2table(bad_wells,'VariableNames',col_names); % make table ready for writing to
@@ -40,7 +39,8 @@ for x = 1: size(plates.expt_plate,1)
         prebw = horzcat(PlateID,prebw);%join
         bad_wells = [bad_wells;prebw];% join new bad wells for current plate onto existing list
     catch
-        warning('QC file for plate not found')   % stops function crashing if missing
+        display (plates.expt_plate(x))
+        warning('QC file for plate not found or no bad wells')   % stops function crashing if missing
     end
 end
 bad_wells(1,:) = []; % remove placeholder first row

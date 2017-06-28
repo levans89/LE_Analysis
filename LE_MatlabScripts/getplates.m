@@ -1,0 +1,9 @@
+batches = {'2017018_002', '2017018_003','2017018_004'}'; %{'1','2','3'} Append new each week
+addcpd_dates = {'20170425', '20170502','20170515'}'; %{'1','2','3'} Append new each week
+plate_DB_path ='W:\2015_09_HTS_LE\project_database\';
+plate_DB = 'Plate_database_latest2.xlsx';
+i = 1;
+batch = batches(i,1);
+exp_DB = readtable(fullfile(plate_DB_path,plate_DB),'Sheet',1);
+expt='LE_7'; % references the field Experiment_ in exp_DB
+plates = getplates(expt, exp_DB);% extract plates from DB of all plates ever screened

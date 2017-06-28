@@ -15,4 +15,9 @@ targets = cell2table(Selleck.Target, 'VariableNames',{'Target'});
 pathways = cell2table(Selleck.Pathway, 'VariableNames',{'Pathway'});
 compound_IDs = cell2table(Selleck.Compound_ID, 'VariableNames',{'drug_names'});
 compound_IDs = horzcat(compound_IDs,targets,pathways);
+for s=1:height(compound_IDs)
+    for c=1:3
+        compound_IDs{s,c}=strtrim(compound_IDs{s,c});
+    end
+end
  end

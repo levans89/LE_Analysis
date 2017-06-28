@@ -19,7 +19,7 @@ image(cdata1,'Parent',axes1,'CDataMapping','scaled');
 title('Log P Values');
 
 % Create ylabel
-ylabel('Sorted by Pathway, Target');
+ylabel('Sorted by Pathway, XRCC5, NQO1');
 
 % Uncomment the following line to preserve the X-limits of the axes
 % xlim(axes1,[0.5 4.5]);
@@ -35,4 +35,6 @@ set(axes1,'Layer','top','XTick',[1 2 3 4],'XTickLabel',...
     {'Angiogenesis','Apoptosis','Cell Cycle','Cytoskeleton','DNA Damage','Endocrinology & Hormones','Epigenetics','GPCR & G Protein','JAK/STAT','MAPK','Metabolism','Microbiology','NF-kB','Neuronal Signaling','Others','PI3K/Akt/mTOR','Proteases','Protein Tyrosine Kinases','Stem Cells & Wnt','TGF-beta/Smad','Transmembrane Transporters','Ubiquitin'});
 % Create colorbar
 colorbar('peer',axes1);
+
+ylim([1 1835])
 
