@@ -36,9 +36,7 @@ batch='4L2K_8';
 thesebatchplates = ~ismember(plates.batch,batch);
 plates = plates(thesebatchplates,:);
 
-thesereferenceplates = ismember(plates.plate_type,'reference_plate');
-referenceplates = plates(thesereferenceplates,:);
-allplates = vertcat(plates,referenceplates);
+referenceplates = plates((ismember(plates.plate_type,'reference_plate')),:);
 
 pORACL = {'A549_XRCC5';'A549_NQO1';'A549_SET';'A549_S100A11'};
 clear theseyearplates thesebatchplates thesereferenceplates
@@ -106,7 +104,7 @@ HCSparas         = Set_Paras('pVal_thr',pVal_thr,'max_nCtrl',max_nCtrl,'var_pct_
 % now plates can be categorical
 plates.CellLine = categorical(plates.CellLine);
 referenceplates.CellLine = categorical(referenceplates.CellLine);
-allplates.CellLine = categorical(allplates.CellLine);            
+plates.CellLine = categorical(plates.CellLine);            
 getplotoptions()              
 %% Visualize Plates & Specify Bioactives
 % Generate standard plot options
@@ -115,8 +113,8 @@ plot_opt = plot_opt_ALL;
 % Visualize plates
 for c = 1:4
     cellplates = plates(plates.CellLine == pORACL{c},:);
-    plate_IDs = cellplates.expt_plate;
-    plate = Load_Batch_LE(cellplates,plate_IDs, profiles_folder_NBT,qc_folder);
+    plateIDs = cellplates.expt_plate;
+    plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder_NBT,qc_folder);
     
     anno_updater;
     
@@ -144,9 +142,9 @@ for c = 1:4
 end
 
 %%  Extract bioactivity files for RB XRCC5
-plates = currexp(currexp.CellLine== strcat('A549_',pORACL{1}),:); % select plateset 
-plate_IDs = plates.expt_plate;
-plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_RB,qc_folder);%note different profiles folder accessed here from S method
+plates = plates(plates.CellLine== strcat('A549_',pORACL{1}),:); % select plateset 
+plateIDs = plates.expt_plate;
+plate = Load_Batch_LE(plates,plateIDs, profiles_folder_RB,qc_folder);%note different profiles folder accessed here from S method
 checknumplatewells()
 plate2 = Merge_Time_Points(plate,time_to_use,merge_method);
 [~,plate3] = Get_Bioactive_Compounds(plate2, HCSparas);
@@ -181,9 +179,9 @@ for c = 1%:4
 plateaccuracy = cell(6,2);    
 refplates = referenceplates(referenceplates.CellLine== pORACL{c},:);
 for p=1:height(refplates)
-    plate_IDs = refplates.expt_plate;
+    plateIDs = refplates.expt_plate;
     %plate_IDs = plate_IDs(p);
-    plate = Load_Batch_LE(refplates,plate_IDs, profiles_folder_NBT,qc_folder);
+    plate = Load_Batch_LE(refplates,plateIDs, profiles_folder_NBT,qc_folder);
     plate2 = Merge_Time_Points(plate,time_to_use,merge_mode);
     plate2 = Get_Bioactive_Compounds(plate2, HCSparas);
     % Get reference compounds
@@ -201,7 +199,7 @@ for p=1:height(refplates)
                                                    'NumNeighbors',NumNeighbors);
     % record results
     plateaccuracy{p,2} = accuracy;
-    plateaccuracy{p,1}= plate_IDs{1,1};
+    plateaccuracy{p,1}= plateIDs{1,1};
 end
 plateaccuracy = cell2table(plateaccuracy);
 %writetable(plateaccuracy,fullfile(results_folder,strcat(pORACL{c},'_Accuracies_6.xlsx')))
@@ -227,9 +225,9 @@ Accuracies = sortrows(Accuracies,'Accuracy','descend');
 %drug_categories = aw_ref;
 drug_category_strimmer
 
-plates = allplates(allplates.CellLine=='A549_XRCC5',:);
-plate_IDs = cellplates.expt_plate;
-plate = Load_Batch_LE(cellplates,plate_IDs, profiles_folder_NBT,qc_folder); % note different profiles folder
+plates = plates(plates.CellLine=='A549_XRCC5',:);
+plateIDs = cellplates.expt_plate;
+plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder_NBT,qc_folder); % note different profiles folder
 
 anno_updater;
 
@@ -257,9 +255,9 @@ Visualize_Plate(plate_fda,plot_opt_ALL{:});
 
 %% Predictions
 % Load plate
-plates = allplates(allplates.CellLine=='A549_XRCC5',:);
-plate_IDs = plates.expt_plate;
-plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_NBT,qc_folder); % note different profiles folder
+plates = plates(plates.CellLine=='A549_XRCC5',:);
+plateIDs = plates.expt_plate;
+plate = Load_Batch_LE(plates,plateIDs, profiles_folder_NBT,qc_folder); % note different profiles folder
 
 % Predict Output
 predict_output = Screen_Plates(plate, HCSparas);
@@ -279,9 +277,9 @@ sort_order = {'Size','Cluster','pathways','targets',...
 
 %batches = cell(4,1);
 for c = 1%:4
-plates = allplates(allplates.CellLine==pORACL{c},:);
-plate_IDs = plates.expt_plate;
-batches{c,1} = plate_IDs;
+plates = plates(plates.CellLine==pORACL{c},:);
+plateIDs = plates.expt_plate;
+batches{c,1} = plateIDs;
 end
 
 Nbatches = length(batches);
@@ -404,12 +402,12 @@ print('-f1','XRCC5clusterper','-dpng','-r500')
 % Generate heatmaps of cell number for all plates to check for pattern
 cd (qc_folder) % move to the location to do all the saving in to improve speed and make checking for files quicker
 for c = 1:4
-    plates = currexp(currexp.CellLine==pORACL{c},:);
-    plate_IDs = plates.expt_plate;
+    plates = plates(plates.CellLine==pORACL{c},:);
+    plateIDs = plates.expt_plate;
     for p = 1:length(plateIDs)
-        filename =char(strcat(plate_IDs(p),'.bmp'));
+        filename =char(strcat(plateIDs(p),'.bmp'));
         display(filename)
-        plate = Load_Batch_LE(plates,plate_IDs(p), profiles_folder_NBT,qc_folder); % load plate
+        plate = Load_Batch_LE(plates,plateIDs(p), profiles_folder_NBT,qc_folder); % load plate
         Show_Cell_Number(plate); % generate heatmap of cell number
         saveas(gcf,plateIDs{1,1},'bmp'); % save
     end
@@ -419,18 +417,227 @@ cd (code_folder) % move back
 %% Print Physical Plate P Values
 cd (qc_folder)
 for c = 1:4
-    plates = currexp(currexp.CellLine==pORACL{c},:);
-    plate_IDs = plates.expt_plate;
-    for p = 1:length(plate_IDs)
-        plate = Load_Batch_LE(plates,plate_IDs(p), profiles_folder_NBT,qc_folder);
+    plates = plates(plates.CellLine==pORACL{c},:);
+    plateIDs = plates.expt_plate;
+    for p = 1:length(plateIDs)
+        plate = Load_Batch_LE(plates,plateIDs(p), profiles_folder_NBT,qc_folder);
         plate2 = Merge_Time_Points(plate,time_to_use,merge_method);
         [plate2,~] = Get_Bioactive_Compounds(plate2, HCSparas);
         plate2.logbioactive_pVals = log(plate2.bioactive_pVals);
         plate2.logbioactive_pVals(isnan(plate2.logbioactive_pVals))=1;%A(isnan(A)) = 0
         Show_PVALUE(plate2)
-        title = ['../results/matlab_results/4lines/',plate_IDs{p},' Log P Value Plate'];
+        title = ['../results/matlab_results/4lines/',plateIDs{p},' Log P Value Plate'];
         print('-f1',title,'-dpng','-r500')
         close all
     end
 end
 cd (code_folder) % move back
+%% Concatenate Profiles
+% theseplates = plates(plates.CellLine=='A549_XRCC5',:);
+% plateIDs = theseplates.expt_plate;
+% XRCC5 = Load_Batch_LE(plates,plateIDs,profiles_folder_NBT,qc_folder);
+% 
+% theseplates = plates(plates.CellLine=='A549_NQO1',:);
+% plateIDs = theseplates.expt_plate;
+% NQO1 = Load_Batch_LE(plates,plateIDs,profiles_folder_NBT,qc_folder);
+% 
+% theseplates = plates(plates.CellLine=='A549_SET',:);
+% plateIDs = theseplates.expt_plate;
+% SET = Load_Batch_LE(plates,plateIDs,profiles_folder_NBT,qc_folder);
+% 
+% theseplates = plates(plates.CellLine=='A549_S100A11',:);
+% plateIDs = theseplates.expt_plate;
+% S100A11 = Load_Batch_LE(plates,plateIDs,profiles_folder_NBT,qc_folder);
+
+all4          = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_all4.mat');
+all3.XSetS100 = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_XRCC5_SET_S100A11.mat');
+all3.XSetN    = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_XRCC5_SET_NQO1.mat');
+all3.SSN      = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_SET_NQO1_S100A11.mat');
+all3. XNS100  = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_XRCC5_NQO1_S100A11.mat');
+
+
+all2.XSet     = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_XRCC5_SET.mat');
+all2. XS100   = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_XRCC5_S100A11.mat');
+all2.XN       = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_XRCC5_NQO1.mat');
+all2.SS       = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_SET_S100A11.mat');
+all2.SetN     = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_SET_NQO1.mat');
+all2.S100N    = load('W:\2015_09_HTS_LE\data\profiles_concatenations\catProfile_NQO1_S100A11.mat');
+
+[plate_bioactive,...
+    plate3,...
+    plate_ref_bioactive,...
+    plate_ref,...
+    plate_cpd_bioactive,...
+    plate_cpd] = Get_Bioactive_Compounds(all4.catProfile., HCSparas);
+
+is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
+plate3.drug_categories(is_inactive) = {'Nonbioactive'}; % not using Nonbioactive to do the PCA.
+bioactive = Plate2Table(plate3);
+writetable(bioactive,fullfile(results_folder,strcat(pORACL{c},'_bioactivepvals_DMSObw_NBT.xlsx')))
+
+Visualize_Plate_LE(all4.catProfile,plot_opt_query{:});
+labelpcplot()
+title(pORACL{c});
+
+% Clustering
+
+col_order = {'Cluster','Size','Significance',...
+             'plateIDs','well_names','drug_names',...
+             'drug_categories','concentrations',...
+             'bioactive_pVals','targets','pathways',...
+             'descriptions','cas','compound',...
+             'cpd_usage','nCells','clone_names','plate_types'};
+
+sort_order = {'Size','Cluster','pathways','targets',...
+              'drug_names','concentrations'};
+
+%batches = cell(4,1);
+for c = 1%:4
+plates = plates(plates.CellLine==pORACL{c},:);
+plateIDs = plates.expt_plate;
+batches{c,1} = plateIDs;
+end
+
+Nbatches = length(batches);
+cluster_info = cell(Nbatches,1);
+profiles = cell(Nbatches,1);
+tree = cell(Nbatches,1);
+for b = 1:Nbatches
+    disp(b)
+    %plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_NBT,qc_folder);
+    [cluster_info{b}, profiles{b}, tree{b}] = Cluster_Compounds(plate_fda,HCSparas);
+    cluster_info{b}.compound = cluster_info{b}.drug_names;
+    cluster_info{b} = cluster_info{b}(:,col_order);
+%     [cluster_info{b},idx] = sortrows(cluster_info{b},sort_order); % #
+%     profiles{b} = profiles{b}(idx,:); % #
+%     tree{b} = Update_NodeIDs(tree{b},idx); % #
+end
+
+% Visualize clusters
+batch_to_plot = 1;
+clusters_to_color = [];
+
+if isempty(clusters_to_color)
+    %-- get significant clusters --%
+    sig_thr = 0.05;
+    sig_clusters = unique(cluster_info{batch_to_plot}.Cluster(...
+        cluster_info{batch_to_plot}.Significance<sig_thr));
+    %-- get DMSO cluster(s) --%
+    [m,n,g] = grpstats(strcmp(cluster_info{batch_to_plot}.drug_categories,'DMSO'),...
+        cluster_info{batch_to_plot}.Cluster,{'mean','numel','gname'});
+    dmso_cluster = str2double(g( (m>0.5) & (n>10) ));
+    
+    clusters_to_color = [sig_clusters(:);dmso_cluster(:)];
+end
+
+PlotPhylogeneticTree(cluster_info{batch_to_plot},tree{batch_to_plot},clusters_to_color);
+%saveas(gcf,strcat(resultsfolder,'clustering'))
+
+% Analysis of clusters
+fh = figure;
+ref_cluster = struct();
+for i = 1:length(cluster_info)
+    ref_cluster(i).categories = unique(cluster_info{i}.drug_categories);
+    ref_cluster(i).cluster_ID = unique(cluster_info{i}.Cluster);
+    ref_cluster(i).stat = zeros(length(ref_cluster(i).categories),length(ref_cluster(i).cluster_ID));
+    
+    for j = 1:size(ref_cluster(i).stat,1)
+        is_class = strcmpi(cluster_info{i}.drug_categories,ref_cluster(i).categories{j});
+        tb = tabulate(cluster_info{i}.Cluster(is_class));  
+        [is_in,loc] = ismember(tb(:,1),ref_cluster(i).cluster_ID); % loc therefore sorts this matrix by cluster ID
+        ref_cluster(i).stat(j,loc(is_in)) = tb(:,2);
+    end
+    
+    % Sort the matrix by the dendrogram
+    [c_id, ia] = unique(cluster_info{i}.Cluster); % ia gives the sort order of the
+    [~,idx] = sort(ia);
+    num_cpds = ref_cluster(i).stat(:,idx); % all the rows are sorted by idx, which is the order the columns need to go in to match the dendrogram
+    c_id = c_id(idx);
+    c_id_sig = ismember(c_id,[sig_clusters;dmso_cluster]);
+    row_totals = sum(num_cpds,2);
+    percs = num_cpds./repmat(sum(num_cpds,2),1,size(num_cpds,2));
+    
+    % Plot
+    ax(i) = subplot(1,1,i,'Parent',fh);
+    imagesc(percs(:,c_id_sig)),colormap(ax(i),hot),caxis(ax(i),[0,1])
+    ax(i).YTick = 1:length(ref_cluster(i).categories);
+    ax(i).YTickLabel = ref_cluster(i).categories;
+    ax(i).TickLabelInterpreter = 'none';
+    ax(i).XTick = [];
+end
+
+% Louise Percents
+[targets, pathways, compound_IDs]=getselleckpathways();
+pathways.Pathway = categorical(pathways.Pathway);
+pathwaysize = tabulate(pathways.Pathway);
+query_cluster = struct();
+for i = 1:height(cluster_info{1,1})
+    query_cluster(i).categories = pathwaysize(:,1);
+    query_cluster(i).cluster_ID = unique(cluster_info{i}.Cluster);
+    query_cluster(i).stat = zeros(length(query_cluster(i).categories),length(query_cluster(i).cluster_ID));
+    for j = 1:size(query_cluster(i).stat,1)
+        is_class = strcmpi(cluster_info{i}.drug_categories,query_cluster(i).categories{j});
+        tb = tabulate(cluster_info{i}.Cluster(is_class));
+
+        [is_in,loc] = ismember(tb(:,1),query_cluster(i).cluster_ID);
+        query_cluster(i).stat(j,loc(is_in)) = tb(:,2);
+    end
+end
+
+ref_cluster.categories2 = cell2table(ref_cluster.categories);
+ref_cluster.counts2 = cell2table(tabulate(cluster_info{1}.drug_categories));
+ref_cluster.drugcounts = join(ref_cluster.categories2,ref_cluster.counts2);
+ref_cluster.clustercounts=tabulate(cluster_info{1}.Cluster);
+
+drugcounts = table2array(ref_cluster.drugcounts(:,2));
+drugcounts = repmat(drugcounts,1,117);
+x = ref_cluster.stat./drugcounts;
+
+clustercounts = ref_cluster.clustercounts(:,2)';
+clustercounts = repmat(clustercounts,32,1);
+y = ref_cluster.stat./clustercounts;
+
+x_ax = x(:);
+y_ax = y(:);
+
+i =1;
+fh = figure;
+ax(i) = subplot(1,1,i,'Parent',fh);
+
+imagesc(x)
+colormap(ax(i),'hot')
+colorbar(ax(i))
+ax(i).YTick = 1:length(ref_cluster(i).categories);
+ax(i).YTickLabel = ref_cluster(i).categories;
+ax(i).TickLabelInterpreter = 'none';
+
+xlabel('Cluster #')
+ylabel('Compound Category (Pathway)')
+print('-f1','XRCC5clusterper','-dpng','-r500')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
