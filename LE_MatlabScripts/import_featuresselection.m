@@ -1,4 +1,4 @@
-function [name,category_id,channel_id,use] = import_featuresselection(filename, startRow, endRow)
+function [name,category_id,channel_id,use,use_2ch,use_all] = import_featuresselection(filename, startRow, endRow)
 %IMPORTFILE1 Import numeric data from a text file as column vectors.
 %   [NAME,CATEGORY_ID,CHANNEL_ID,USE] = IMPORTFILE1(FILENAME) Reads data
 %   from text file FILENAME for the default selection.

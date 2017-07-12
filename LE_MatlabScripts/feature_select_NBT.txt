@@ -1,660 +1,660 @@
-name	category_id	channel_id	use
-'H2B_DItot'	1	1	0
-'H2B_DIav'	1	1	0
-'H2B_DI5'	1	1	0
-'H2B_DI20'	1	1	0
-'H2B_DI50'	1	1	0
-'H2B_DI80'	1	1	0
-'H2B_DI95'	1	1	0
-'H2B_CItot'	1	1	0
-'H2B_CIav'	1	1	0
-'H2B_CI5'	1	1	0
-'H2B_CI20'	1	1	0
-'H2B_CI50'	1	1	0
-'H2B_CI80'	1	1	0
-'H2B_CI95'	1	1	0
-'H2B_YItot'	1	1	0
-'H2B_YIav'	1	1	0
-'H2B_YI5'	1	1	0
-'H2B_YI20'	1	1	0
-'H2B_YI50'	1	1	0
-'H2B_YI80'	1	1	0
-'H2B_YI95'	1	1	0
-'H2B_RDCItot'	1	1	0
-'H2B_RDCIav'	1	1	0
-'H2B_RDCI50'	1	1	0
-'H2B_RDYItot'	1	1	0
-'H2B_RDYIav'	1	1	0
-'H2B_RDYI50'	1	1	0
-'H2B_RYCItot'	1	1	0
-'H2B_RYCIav'	1	1	0
-'H2B_RYCI50'	1	1	0
-'SET_DItot'	1	2	1
-'SET_DIav'	1	2	1
-'SET_DI5'	1	2	1
-'SET_DI20'	1	2	1
-'SET_DI50'	1	2	1
-'SET_DI80'	1	2	1
-'SET_DI95'	1	2	1
-'SET_CItot'	1	2	1
-'SET_CIav'	1	2	1
-'SET_CI5'	1	2	1
-'SET_CI20'	1	2	1
-'SET_CI50'	1	2	1
-'SET_CI80'	1	2	1
-'SET_CI95'	1	2	1
-'SET_YItot'	1	2	1
-'SET_YIav'	1	2	1
-'SET_YI5'	1	2	1
-'SET_YI20'	1	2	1
-'SET_YI50'	1	2	1
-'SET_YI80'	1	2	1
-'SET_YI95'	1	2	1
-'SET_RDCItot'	1	2	1
-'SET_RDCIav'	1	2	1
-'SET_RDCI50'	1	2	1
-'SET_RDYItot'	1	2	1
-'SET_RDYIav'	1	2	1
-'SET_RDYI50'	1	2	1
-'SET_RYCItot'	1	2	1
-'SET_RYCIav'	1	2	1
-'SET_RYCI50'	1	2	1
-'CYTO_DItot'	1	3	0
-'CYTO_DIav'	1	3	0
-'CYTO_DI5'	1	3	0
-'CYTO_DI20'	1	3	0
-'CYTO_DI50'	1	3	0
-'CYTO_DI80'	1	3	0
-'CYTO_DI95'	1	3	0
-'CYTO_CItot'	1	3	0
-'CYTO_CIav'	1	3	0
-'CYTO_CI5'	1	3	0
-'CYTO_CI20'	1	3	0
-'CYTO_CI50'	1	3	0
-'CYTO_CI80'	1	3	0
-'CYTO_CI95'	1	3	0
-'CYTO_YItot'	1	3	0
-'CYTO_YIav'	1	3	0
-'CYTO_YI5'	1	3	0
-'CYTO_YI20'	1	3	0
-'CYTO_YI50'	1	3	0
-'CYTO_YI80'	1	3	0
-'CYTO_YI95'	1	3	0
-'CYTO_RDCItot'	1	3	0
-'CYTO_RDCIav'	1	3	0
-'CYTO_RDCI50'	1	3	0
-'CYTO_RDYItot'	1	3	0
-'CYTO_RDYIav'	1	3	0
-'CYTO_RDYI50'	1	3	0
-'CYTO_RYCItot'	1	3	0
-'CYTO_RYCIav'	1	3	0
-'CYTO_RYCI50'	1	3	0
-'H2BSET_RDItot'	1	"[1,2]"	0
-'H2BSET_RDI50'	1	"[1,2]"	0
-'H2BSET_RCItot'	1	"[1,2]"	0
-'H2BSET_RCI50'	1	"[1,2]"	0
-'H2BSET_RYItot'	1	"[1,2]"	0
-'H2BSET_RYI50'	1	"[1,2]"	0
-'H2BCYTO_RDItot'	1	"[1,3]"	0
-'H2BCYTO_RDI50'	1	"[1,3]"	0
-'H2BCYTO_RCItot'	1	"[1,3]"	0
-'H2BCYTO_RCI50'	1	"[1,3]"	0
-'H2BCYTO_RYItot'	1	"[1,3]"	0
-'H2BCYTO_RYI50'	1	"[1,3]"	0
-'SETCYTO_RDItot'	1	"[2,3]"	0
-'SETCYTO_RDI50'	1	"[2,3]"	0
-'SETCYTO_RCItot'	1	"[2,3]"	0
-'SETCYTO_RCI50'	1	"[2,3]"	0
-'SETCYTO_RYItot'	1	"[2,3]"	0
-'SETCYTO_RYI50'	1	"[2,3]"	0
-'object_number_in_cell_region'	2	1	0
-'mean_object_area_in_cell_region'	2	1	0
-'stddev_object_area_in_cell_region'	2	1	0
-'coeff_variance_area_in_cell_region'	2	1	0
-'max_to_min_object_area_ratio_in_cell_region'	2	1	0
-'mean_object_eccentricity_in_cell_region'	2	1	0
-'stddev_object_eccentricity_in_cell_region'	2	1	0
-'coeff_variance_eccentricity_in_cell_region'	2	1	0
-'max_to_min_object_eccentricity_ratio_in_cell_region'	2	1	0
-'mean_object_perimeter_in_cell_region'	2	1	0
-'stddev_object_perimeter_in_cell_region'	2	1	0
-'coeff_variance_perimeter_in_cell_region'	2	1	0
-'max_to_min_object_perimeter_ratio_in_cell_region'	2	1	0
-'mean_object_majoraxislength_in_cell_region'	2	1	0
-'stddev_object_majoraxislength_in_cell_region'	2	1	0
-'coeff_variance_majoraxislength_in_cell_region'	2	1	0
-'max_to_min_object_majoraxislength_ratio_in_cell_region'	2	1	0
-'region_area_in_cell_region'	2	1	0
-'region_eulernumber_in_cell_region'	2	1	0
-'region_eccentricity_in_cell_region'	2	1	0
-'region_solidity_in_cell_region'	2	1	0
-'region_perimeter_in_cell_region'	2	1	0
-'region_majoraxislength_in_cell_region'	2	1	0
-'object_number_in_cell_region'	2	2	1
-'mean_object_area_in_cell_region'	2	2	1
-'stddev_object_area_in_cell_region'	2	2	1
-'coeff_variance_area_in_cell_region'	2	2	1
-'max_to_min_object_area_ratio_in_cell_region'	2	2	1
-'mean_object_eccentricity_in_cell_region'	2	2	1
-'stddev_object_eccentricity_in_cell_region'	2	2	1
-'coeff_variance_eccentricity_in_cell_region'	2	2	1
-'max_to_min_object_eccentricity_ratio_in_cell_region'	2	2	1
-'mean_object_perimeter_in_cell_region'	2	2	1
-'stddev_object_perimeter_in_cell_region'	2	2	1
-'coeff_variance_perimeter_in_cell_region'	2	2	1
-'max_to_min_object_perimeter_ratio_in_cell_region'	2	2	1
-'mean_object_majoraxislength_in_cell_region'	2	2	1
-'stddev_object_majoraxislength_in_cell_region'	2	2	1
-'coeff_variance_majoraxislength_in_cell_region'	2	2	1
-'max_to_min_object_majoraxislength_ratio_in_cell_region'	2	2	1
-'region_area_in_cell_region'	2	2	1
-'region_eulernumber_in_cell_region'	2	2	1
-'region_eccentricity_in_cell_region'	2	2	1
-'region_solidity_in_cell_region'	2	2	1
-'region_perimeter_in_cell_region'	2	2	1
-'region_majoraxislength_in_cell_region'	2	2	1
-'object_number_in_cell_region'	2	3	0
-'mean_object_area_in_cell_region'	2	3	0
-'stddev_object_area_in_cell_region'	2	3	0
-'coeff_variance_area_in_cell_region'	2	3	0
-'max_to_min_object_area_ratio_in_cell_region'	2	3	0
-'mean_object_eccentricity_in_cell_region'	2	3	0
-'stddev_object_eccentricity_in_cell_region'	2	3	0
-'coeff_variance_eccentricity_in_cell_region'	2	3	0
-'max_to_min_object_eccentricity_ratio_in_cell_region'	2	3	0
-'mean_object_perimeter_in_cell_region'	2	3	0
-'stddev_object_perimeter_in_cell_region'	2	3	0
-'coeff_variance_perimeter_in_cell_region'	2	3	0
-'max_to_min_object_perimeter_ratio_in_cell_region'	2	3	0
-'mean_object_majoraxislength_in_cell_region'	2	3	0
-'stddev_object_majoraxislength_in_cell_region'	2	3	0
-'coeff_variance_majoraxislength_in_cell_region'	2	3	0
-'max_to_min_object_majoraxislength_ratio_in_cell_region'	2	3	0
-'region_area_in_cell_region'	2	3	0
-'region_eulernumber_in_cell_region'	2	3	0
-'region_eccentricity_in_cell_region'	2	3	0
-'region_solidity_in_cell_region'	2	3	0
-'region_perimeter_in_cell_region'	2	3	0
-'region_majoraxislength_in_cell_region'	2	3	0
-'object_number_in_dna_region'	2	1	0
-'mean_object_area_in_dna_region'	2	1	0
-'stddev_object_area_in_dna_region'	2	1	0
-'coeff_variance_area_in_dna_region'	2	1	0
-'max_to_min_object_area_ratio_in_dna_region'	2	1	0
-'mean_object_eccentricity_in_dna_region'	2	1	0
-'stddev_object_eccentricity_in_dna_region'	2	1	0
-'coeff_variance_eccentricity_in_dna_region'	2	1	0
-'max_to_min_object_eccentricity_ratio_in_dna_region'	2	1	0
-'mean_object_perimeter_in_dna_region'	2	1	0
-'stddev_object_perimeter_in_dna_region'	2	1	0
-'coeff_variance_perimeter_in_dna_region'	2	1	0
-'max_to_min_object_perimeter_ratio_in_dna_region'	2	1	0
-'mean_object_majoraxislength_in_dna_region'	2	1	0
-'stddev_object_majoraxislength_in_dna_region'	2	1	0
-'coeff_variance_majoraxislength_in_dna_region'	2	1	0
-'max_to_min_object_majoraxislength_ratio_in_dna_region'	2	1	0
-'region_area_in_dna_region'	2	1	0
-'region_eulernumber_in_dna_region'	2	1	0
-'region_eccentricity_in_dna_region'	2	1	0
-'region_solidity_in_dna_region'	2	1	0
-'region_perimeter_in_dna_region'	2	1	0
-'region_majoraxislength_in_dna_region'	2	1	0
-'object_number_in_dna_region'	2	2	1
-'mean_object_area_in_dna_region'	2	2	1
-'stddev_object_area_in_dna_region'	2	2	1
-'coeff_variance_area_in_dna_region'	2	2	1
-'max_to_min_object_area_ratio_in_dna_region'	2	2	1
-'mean_object_eccentricity_in_dna_region'	2	2	1
-'stddev_object_eccentricity_in_dna_region'	2	2	1
-'coeff_variance_eccentricity_in_dna_region'	2	2	1
-'max_to_min_object_eccentricity_ratio_in_dna_region'	2	2	1
-'mean_object_perimeter_in_dna_region'	2	2	1
-'stddev_object_perimeter_in_dna_region'	2	2	1
-'coeff_variance_perimeter_in_dna_region'	2	2	1
-'max_to_min_object_perimeter_ratio_in_dna_region'	2	2	1
-'mean_object_majoraxislength_in_dna_region'	2	2	1
-'stddev_object_majoraxislength_in_dna_region'	2	2	1
-'coeff_variance_majoraxislength_in_dna_region'	2	2	1
-'max_to_min_object_majoraxislength_ratio_in_dna_region'	2	2	1
-'region_area_in_dna_region'	2	2	1
-'region_eulernumber_in_dna_region'	2	2	1
-'region_eccentricity_in_dna_region'	2	2	1
-'region_solidity_in_dna_region'	2	2	1
-'region_perimeter_in_dna_region'	2	2	1
-'region_majoraxislength_in_dna_region'	2	2	1
-'object_number_in_dna_region'	2	3	0
-'mean_object_area_in_dna_region'	2	3	0
-'stddev_object_area_in_dna_region'	2	3	0
-'coeff_variance_area_in_dna_region'	2	3	0
-'max_to_min_object_area_ratio_in_dna_region'	2	3	0
-'mean_object_eccentricity_in_dna_region'	2	3	0
-'stddev_object_eccentricity_in_dna_region'	2	3	0
-'coeff_variance_eccentricity_in_dna_region'	2	3	0
-'max_to_min_object_eccentricity_ratio_in_dna_region'	2	3	0
-'mean_object_perimeter_in_dna_region'	2	3	0
-'stddev_object_perimeter_in_dna_region'	2	3	0
-'coeff_variance_perimeter_in_dna_region'	2	3	0
-'max_to_min_object_perimeter_ratio_in_dna_region'	2	3	0
-'mean_object_majoraxislength_in_dna_region'	2	3	0
-'stddev_object_majoraxislength_in_dna_region'	2	3	0
-'coeff_variance_majoraxislength_in_dna_region'	2	3	0
-'max_to_min_object_majoraxislength_ratio_in_dna_region'	2	3	0
-'region_area_in_dna_region'	2	3	0
-'region_eulernumber_in_dna_region'	2	3	0
-'region_eccentricity_in_dna_region'	2	3	0
-'region_solidity_in_dna_region'	2	3	0
-'region_perimeter_in_dna_region'	2	3	0
-'region_majoraxislength_in_dna_region'	2	3	0
-'object_number_in_non_dna_region'	2	1	0
-'mean_object_area_in_non_dna_region'	2	1	0
-'stddev_object_area_in_non_dna_region'	2	1	0
-'coeff_variance_area_in_non_dna_region'	2	1	0
-'max_to_min_object_area_ratio_in_non_dna_region'	2	1	0
-'mean_object_eccentricity_in_non_dna_region'	2	1	0
-'stddev_object_eccentricity_in_non_dna_region'	2	1	0
-'coeff_variance_eccentricity_in_non_dna_region'	2	1	0
-'max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	1	0
-'mean_object_perimeter_in_non_dna_region'	2	1	0
-'stddev_object_perimeter_in_non_dna_region'	2	1	0
-'coeff_variance_perimeter_in_non_dna_region'	2	1	0
-'max_to_min_object_perimeter_ratio_in_non_dna_region'	2	1	0
-'mean_object_majoraxislength_in_non_dna_region'	2	1	0
-'stddev_object_majoraxislength_in_non_dna_region'	2	1	0
-'coeff_variance_majoraxislength_in_non_dna_region'	2	1	0
-'max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	1	0
-'region_area_in_non_dna_region'	2	1	0
-'region_eulernumber_in_non_dna_region'	2	1	0
-'region_eccentricity_in_non_dna_region'	2	1	0
-'region_solidity_in_non_dna_region'	2	1	0
-'region_perimeter_in_non_dna_region'	2	1	0
-'region_majoraxislength_in_non_dna_region'	2	1	0
-'object_number_in_non_dna_region'	2	2	1
-'mean_object_area_in_non_dna_region'	2	2	1
-'stddev_object_area_in_non_dna_region'	2	2	1
-'coeff_variance_area_in_non_dna_region'	2	2	1
-'max_to_min_object_area_ratio_in_non_dna_region'	2	2	1
-'mean_object_eccentricity_in_non_dna_region'	2	2	1
-'stddev_object_eccentricity_in_non_dna_region'	2	2	1
-'coeff_variance_eccentricity_in_non_dna_region'	2	2	1
-'max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	2	1
-'mean_object_perimeter_in_non_dna_region'	2	2	1
-'stddev_object_perimeter_in_non_dna_region'	2	2	1
-'coeff_variance_perimeter_in_non_dna_region'	2	2	1
-'max_to_min_object_perimeter_ratio_in_non_dna_region'	2	2	1
-'mean_object_majoraxislength_in_non_dna_region'	2	2	1
-'stddev_object_majoraxislength_in_non_dna_region'	2	2	1
-'coeff_variance_majoraxislength_in_non_dna_region'	2	2	1
-'max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	2	1
-'region_area_in_non_dna_region'	2	2	1
-'region_eulernumber_in_non_dna_region'	2	2	1
-'region_eccentricity_in_non_dna_region'	2	2	1
-'region_solidity_in_non_dna_region'	2	2	1
-'region_perimeter_in_non_dna_region'	2	2	1
-'region_majoraxislength_in_non_dna_region'	2	2	1
-'object_number_in_non_dna_region'	2	3	0
-'mean_object_area_in_non_dna_region'	2	3	0
-'stddev_object_area_in_non_dna_region'	2	3	0
-'coeff_variance_area_in_non_dna_region'	2	3	0
-'max_to_min_object_area_ratio_in_non_dna_region'	2	3	0
-'mean_object_eccentricity_in_non_dna_region'	2	3	0
-'stddev_object_eccentricity_in_non_dna_region'	2	3	0
-'coeff_variance_eccentricity_in_non_dna_region'	2	3	0
-'max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	3	0
-'mean_object_perimeter_in_non_dna_region'	2	3	0
-'stddev_object_perimeter_in_non_dna_region'	2	3	0
-'coeff_variance_perimeter_in_non_dna_region'	2	3	0
-'max_to_min_object_perimeter_ratio_in_non_dna_region'	2	3	0
-'mean_object_majoraxislength_in_non_dna_region'	2	3	0
-'stddev_object_majoraxislength_in_non_dna_region'	2	3	0
-'coeff_variance_majoraxislength_in_non_dna_region'	2	3	0
-'max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	3	0
-'region_area_in_non_dna_region'	2	3	0
-'region_eulernumber_in_non_dna_region'	2	3	0
-'region_eccentricity_in_non_dna_region'	2	3	0
-'region_solidity_in_non_dna_region'	2	3	0
-'region_perimeter_in_non_dna_region'	2	3	0
-'region_majoraxislength_in_non_dna_region'	2	3	0
-'ratio_of_object_number_in_dna_region_to_object_number_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_mean_object_area_in_dna_region_to_mean_object_area_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_stddev_object_area_in_dna_region_to_stddev_object_area_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_coeff_variance_area_in_dna_region_to_coeff_variance_area_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_max_to_min_object_area_ratio_in_dna_region_to_max_to_min_object_area_ratio_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_mean_object_eccentricity_in_dna_region_to_mean_object_eccentricity_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_stddev_object_eccentricity_in_dna_region_to_stddev_object_eccentricity_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_coeff_variance_eccentricity_in_dna_region_to_coeff_variance_eccentricity_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_max_to_min_object_eccentricity_ratio_in_dna_region_to_max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_mean_object_perimeter_in_dna_region_to_mean_object_perimeter_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_stddev_object_perimeter_in_dna_region_to_stddev_object_perimeter_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_coeff_variance_perimeter_in_dna_region_to_coeff_variance_perimeter_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_max_to_min_object_perimeter_ratio_in_dna_region_to_max_to_min_object_perimeter_ratio_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_mean_object_majoraxislength_in_dna_region_to_mean_object_majoraxislength_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_stddev_object_majoraxislength_in_dna_region_to_stddev_object_majoraxislength_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_coeff_variance_majoraxislength_in_dna_region_to_coeff_variance_majoraxislength_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_max_to_min_object_majoraxislength_ratio_in_dna_region_to_max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_region_area_in_dna_region_to_region_area_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_region_eulernumber_in_dna_region_to_region_eulernumber_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_region_eccentricity_in_dna_region_to_region_eccentricity_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_region_solidity_in_dna_region_to_region_solidity_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_region_perimeter_in_dna_region_to_region_perimeter_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_region_majoraxislength_in_dna_region_to_region_majoraxislength_in_non_dna_region'	2	"[1,1]"	0
-'ratio_of_object_number_in_dna_region_to_object_number_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_mean_object_area_in_dna_region_to_mean_object_area_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_stddev_object_area_in_dna_region_to_stddev_object_area_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_coeff_variance_area_in_dna_region_to_coeff_variance_area_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_max_to_min_object_area_ratio_in_dna_region_to_max_to_min_object_area_ratio_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_mean_object_eccentricity_in_dna_region_to_mean_object_eccentricity_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_stddev_object_eccentricity_in_dna_region_to_stddev_object_eccentricity_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_coeff_variance_eccentricity_in_dna_region_to_coeff_variance_eccentricity_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_max_to_min_object_eccentricity_ratio_in_dna_region_to_max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_mean_object_perimeter_in_dna_region_to_mean_object_perimeter_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_stddev_object_perimeter_in_dna_region_to_stddev_object_perimeter_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_coeff_variance_perimeter_in_dna_region_to_coeff_variance_perimeter_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_max_to_min_object_perimeter_ratio_in_dna_region_to_max_to_min_object_perimeter_ratio_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_mean_object_majoraxislength_in_dna_region_to_mean_object_majoraxislength_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_stddev_object_majoraxislength_in_dna_region_to_stddev_object_majoraxislength_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_coeff_variance_majoraxislength_in_dna_region_to_coeff_variance_majoraxislength_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_max_to_min_object_majoraxislength_ratio_in_dna_region_to_max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_region_area_in_dna_region_to_region_area_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_region_eulernumber_in_dna_region_to_region_eulernumber_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_region_eccentricity_in_dna_region_to_region_eccentricity_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_region_solidity_in_dna_region_to_region_solidity_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_region_perimeter_in_dna_region_to_region_perimeter_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_region_majoraxislength_in_dna_region_to_region_majoraxislength_in_non_dna_region'	2	"[2,2]"	1
-'ratio_of_object_number_in_dna_region_to_object_number_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_mean_object_area_in_dna_region_to_mean_object_area_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_stddev_object_area_in_dna_region_to_stddev_object_area_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_coeff_variance_area_in_dna_region_to_coeff_variance_area_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_max_to_min_object_area_ratio_in_dna_region_to_max_to_min_object_area_ratio_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_mean_object_eccentricity_in_dna_region_to_mean_object_eccentricity_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_stddev_object_eccentricity_in_dna_region_to_stddev_object_eccentricity_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_coeff_variance_eccentricity_in_dna_region_to_coeff_variance_eccentricity_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_max_to_min_object_eccentricity_ratio_in_dna_region_to_max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_mean_object_perimeter_in_dna_region_to_mean_object_perimeter_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_stddev_object_perimeter_in_dna_region_to_stddev_object_perimeter_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_coeff_variance_perimeter_in_dna_region_to_coeff_variance_perimeter_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_max_to_min_object_perimeter_ratio_in_dna_region_to_max_to_min_object_perimeter_ratio_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_mean_object_majoraxislength_in_dna_region_to_mean_object_majoraxislength_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_stddev_object_majoraxislength_in_dna_region_to_stddev_object_majoraxislength_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_coeff_variance_majoraxislength_in_dna_region_to_coeff_variance_majoraxislength_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_max_to_min_object_majoraxislength_ratio_in_dna_region_to_max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_region_area_in_dna_region_to_region_area_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_region_eulernumber_in_dna_region_to_region_eulernumber_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_region_eccentricity_in_dna_region_to_region_eccentricity_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_region_solidity_in_dna_region_to_region_solidity_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_region_perimeter_in_dna_region_to_region_perimeter_in_non_dna_region'	2	"[3,3]"	0
-'ratio_of_region_majoraxislength_in_dna_region_to_region_majoraxislength_in_non_dna_region'	2	"[3,3]"	0
-'distance_between_binary_centroid_and_intensity_centroid'	3	1	0
-'distance_between_binary_centroid_and_cell_mask_centroid'	3	1	0
-'distance_between_intensity_centroid_and_cell_mask_centroid'	3	1	0
-'distance_between_binary_centroid_and_dna_mask_centroid'	3	1	0
-'distance_between_intensity_centroid_and_dna_mask_centroid'	3	1	0
-'distance_between_binary_centroid_and_intensity_centroid'	3	2	1
-'distance_between_binary_centroid_and_cell_mask_centroid'	3	2	1
-'distance_between_intensity_centroid_and_cell_mask_centroid'	3	2	1
-'distance_between_binary_centroid_and_dna_mask_centroid'	3	2	1
-'distance_between_intensity_centroid_and_dna_mask_centroid'	3	2	1
-'distance_between_binary_centroid_and_intensity_centroid'	3	3	0
-'distance_between_binary_centroid_and_cell_mask_centroid'	3	3	0
-'distance_between_intensity_centroid_and_cell_mask_centroid'	3	3	0
-'distance_between_binary_centroid_and_dna_mask_centroid'	3	3	0
-'distance_between_intensity_centroid_and_dna_mask_centroid'	3	3	0
-'distance_between_intensity_centroid_and_intensity_centroid'	3	"[1,2]"	0
-'distance_between_intensity_centroid_and_intensity_centroid'	3	"[1,3]"	0
-'distance_between_intensity_centroid_and_intensity_centroid'	3	"[2,3]"	0
-'zernike_0-0'	4	1	0
-'zernike_1-1'	4	1	0
-'zernike_2-0'	4	1	0
-'zernike_2-2'	4	1	0
-'zernike_3-1'	4	1	0
-'zernike_3-3'	4	1	0
-'zernike_4-0'	4	1	0
-'zernike_4-2'	4	1	0
-'zernike_4-4'	4	1	0
-'zernike_5-1'	4	1	0
-'zernike_5-3'	4	1	0
-'zernike_5-5'	4	1	0
-'zernike_6-0'	4	1	0
-'zernike_6-2'	4	1	0
-'zernike_6-4'	4	1	0
-'zernike_6-6'	4	1	0
-'zernike_7-1'	4	1	0
-'zernike_7-3'	4	1	0
-'zernike_7-5'	4	1	0
-'zernike_7-7'	4	1	0
-'zernike_8-0'	4	1	0
-'zernike_8-2'	4	1	0
-'zernike_8-4'	4	1	0
-'zernike_8-6'	4	1	0
-'zernike_8-8'	4	1	0
-'zernike_9-1'	4	1	0
-'zernike_9-3'	4	1	0
-'zernike_9-5'	4	1	0
-'zernike_9-7'	4	1	0
-'zernike_9-9'	4	1	0
-'zernike_10-0'	4	1	0
-'zernike_10-2'	4	1	0
-'zernike_10-4'	4	1	0
-'zernike_10-6'	4	1	0
-'zernike_10-8'	4	1	0
-'zernike_10-10'	4	1	0
-'zernike_11-1'	4	1	0
-'zernike_11-3'	4	1	0
-'zernike_11-5'	4	1	0
-'zernike_11-7'	4	1	0
-'zernike_11-9'	4	1	0
-'zernike_11-11'	4	1	0
-'zernike_12-0'	4	1	0
-'zernike_12-2'	4	1	0
-'zernike_12-4'	4	1	0
-'zernike_12-6'	4	1	0
-'zernike_12-8'	4	1	0
-'zernike_12-10'	4	1	0
-'zernike_12-12'	4	1	0
-'zernike_0-0'	4	2	1
-'zernike_1-1'	4	2	1
-'zernike_2-0'	4	2	1
-'zernike_2-2'	4	2	1
-'zernike_3-1'	4	2	1
-'zernike_3-3'	4	2	1
-'zernike_4-0'	4	2	1
-'zernike_4-2'	4	2	1
-'zernike_4-4'	4	2	1
-'zernike_5-1'	4	2	1
-'zernike_5-3'	4	2	1
-'zernike_5-5'	4	2	1
-'zernike_6-0'	4	2	1
-'zernike_6-2'	4	2	1
-'zernike_6-4'	4	2	1
-'zernike_6-6'	4	2	1
-'zernike_7-1'	4	2	1
-'zernike_7-3'	4	2	1
-'zernike_7-5'	4	2	1
-'zernike_7-7'	4	2	1
-'zernike_8-0'	4	2	1
-'zernike_8-2'	4	2	1
-'zernike_8-4'	4	2	1
-'zernike_8-6'	4	2	1
-'zernike_8-8'	4	2	1
-'zernike_9-1'	4	2	1
-'zernike_9-3'	4	2	1
-'zernike_9-5'	4	2	1
-'zernike_9-7'	4	2	1
-'zernike_9-9'	4	2	1
-'zernike_10-0'	4	2	1
-'zernike_10-2'	4	2	1
-'zernike_10-4'	4	2	1
-'zernike_10-6'	4	2	1
-'zernike_10-8'	4	2	1
-'zernike_10-10'	4	2	1
-'zernike_11-1'	4	2	1
-'zernike_11-3'	4	2	1
-'zernike_11-5'	4	2	1
-'zernike_11-7'	4	2	1
-'zernike_11-9'	4	2	1
-'zernike_11-11'	4	2	1
-'zernike_12-0'	4	2	1
-'zernike_12-2'	4	2	1
-'zernike_12-4'	4	2	1
-'zernike_12-6'	4	2	1
-'zernike_12-8'	4	2	1
-'zernike_12-10'	4	2	1
-'zernike_12-12'	4	2	1
-'zernike_0-0'	4	3	0
-'zernike_1-1'	4	3	0
-'zernike_2-0'	4	3	0
-'zernike_2-2'	4	3	0
-'zernike_3-1'	4	3	0
-'zernike_3-3'	4	3	0
-'zernike_4-0'	4	3	0
-'zernike_4-2'	4	3	0
-'zernike_4-4'	4	3	0
-'zernike_5-1'	4	3	0
-'zernike_5-3'	4	3	0
-'zernike_5-5'	4	3	0
-'zernike_6-0'	4	3	0
-'zernike_6-2'	4	3	0
-'zernike_6-4'	4	3	0
-'zernike_6-6'	4	3	0
-'zernike_7-1'	4	3	0
-'zernike_7-3'	4	3	0
-'zernike_7-5'	4	3	0
-'zernike_7-7'	4	3	0
-'zernike_8-0'	4	3	0
-'zernike_8-2'	4	3	0
-'zernike_8-4'	4	3	0
-'zernike_8-6'	4	3	0
-'zernike_8-8'	4	3	0
-'zernike_9-1'	4	3	0
-'zernike_9-3'	4	3	0
-'zernike_9-5'	4	3	0
-'zernike_9-7'	4	3	0
-'zernike_9-9'	4	3	0
-'zernike_10-0'	4	3	0
-'zernike_10-2'	4	3	0
-'zernike_10-4'	4	3	0
-'zernike_10-6'	4	3	0
-'zernike_10-8'	4	3	0
-'zernike_10-10'	4	3	0
-'zernike_11-1'	4	3	0
-'zernike_11-3'	4	3	0
-'zernike_11-5'	4	3	0
-'zernike_11-7'	4	3	0
-'zernike_11-9'	4	3	0
-'zernike_11-11'	4	3	0
-'zernike_12-0'	4	3	0
-'zernike_12-2'	4	3	0
-'zernike_12-4'	4	3	0
-'zernike_12-6'	4	3	0
-'zernike_12-8'	4	3	0
-'zernike_12-10'	4	3	0
-'zernike_12-12'	4	3	0
-'haralick_ASM_mean'	5	1	0
-'haralick_contrast_mean'	5	1	0
-'haralick_correlation_mean'	5	1	0
-'haralick_variance_mean'	5	1	0
-'haralick_IDM_mean'	5	1	0
-'haralick_sum_avg_mean'	5	1	0
-'haralick_sum_var_mean'	5	1	0
-'haralick_sum_entropy_mean'	5	1	0
-'haralick_entropy_mean'	5	1	0
-'haralick_diff_var_mean'	5	1	0
-'haralick_diff_entropy_mean'	5	1	0
-'haralick_meas_corr1_mean'	5	1	0
-'haralick_meas_corr2_mean'	5	1	0
-'haralick_ASM_stddev'	5	1	0
-'haralick_contrast_stddev'	5	1	0
-'haralick_correlation_stddev'	5	1	0
-'haralick_variance_stddev'	5	1	0
-'haralick_IDM_stddev'	5	1	0
-'haralick_sum_avg_stddev'	5	1	0
-'haralick_sum_var_stddev'	5	1	0
-'haralick_sum_entropy_stddev'	5	1	0
-'haralick_entropy_stddev'	5	1	0
-'haralick_diff_var_stddev'	5	1	0
-'haralick_diff_entropy_stddev'	5	1	0
-'haralick_meas_corr1_stddev'	5	1	0
-'haralick_meas_corr2_stddev'	5	1	0
-'haralick_ASM_mean'	5	2	1
-'haralick_contrast_mean'	5	2	1
-'haralick_correlation_mean'	5	2	1
-'haralick_variance_mean'	5	2	1
-'haralick_IDM_mean'	5	2	1
-'haralick_sum_avg_mean'	5	2	1
-'haralick_sum_var_mean'	5	2	1
-'haralick_sum_entropy_mean'	5	2	1
-'haralick_entropy_mean'	5	2	1
-'haralick_diff_var_mean'	5	2	1
-'haralick_diff_entropy_mean'	5	2	1
-'haralick_meas_corr1_mean'	5	2	1
-'haralick_meas_corr2_mean'	5	2	1
-'haralick_ASM_stddev'	5	2	1
-'haralick_contrast_stddev'	5	2	1
-'haralick_correlation_stddev'	5	2	1
-'haralick_variance_stddev'	5	2	1
-'haralick_IDM_stddev'	5	2	1
-'haralick_sum_avg_stddev'	5	2	1
-'haralick_sum_var_stddev'	5	2	1
-'haralick_sum_entropy_stddev'	5	2	1
-'haralick_entropy_stddev'	5	2	1
-'haralick_diff_var_stddev'	5	2	1
-'haralick_diff_entropy_stddev'	5	2	1
-'haralick_meas_corr1_stddev'	5	2	1
-'haralick_meas_corr2_stddev'	5	2	1
-'haralick_ASM_mean'	5	3	0
-'haralick_contrast_mean'	5	3	0
-'haralick_correlation_mean'	5	3	0
-'haralick_variance_mean'	5	3	0
-'haralick_IDM_mean'	5	3	0
-'haralick_sum_avg_mean'	5	3	0
-'haralick_sum_var_mean'	5	3	0
-'haralick_sum_entropy_mean'	5	3	0
-'haralick_entropy_mean'	5	3	0
-'haralick_diff_var_mean'	5	3	0
-'haralick_diff_entropy_mean'	5	3	0
-'haralick_meas_corr1_mean'	5	3	0
-'haralick_meas_corr2_mean'	5	3	0
-'haralick_ASM_stddev'	5	3	0
-'haralick_contrast_stddev'	5	3	0
-'haralick_correlation_stddev'	5	3	0
-'haralick_variance_stddev'	5	3	0
-'haralick_IDM_stddev'	5	3	0
-'haralick_sum_avg_stddev'	5	3	0
-'haralick_sum_var_stddev'	5	3	0
-'haralick_sum_entropy_stddev'	5	3	0
-'haralick_entropy_stddev'	5	3	0
-'haralick_diff_var_stddev'	5	3	0
-'haralick_diff_entropy_stddev'	5	3	0
-'haralick_meas_corr1_stddev'	5	3	0
-'haralick_meas_corr2_stddev'	5	3	0
-'Area_N'	6	1	1
-'Perimeter_N'	6	1	1
-'PAR_N'	6	1	1
-'BdbLWR_N'	6	1	1
-'BdbFilledR_N'	6	1	1
-'BdbLength_N'	6	1	1
-'BdbWidth_N'	6	1	1
-'MajAxisLength_N'	6	1	1
-'MinAxisLength_N'	6	1	1
-'AxisMajMinR_N'	6	1	1
-'Solidity_N'	6	1	1
-'CvxHPPR_N'	6	1	1
-'EquivDiameter_N'	6	1	1
-'Eccentricity_N'	6	1	1
-'Area_C'	6	3	1
-'Perimeter_C'	6	3	1
-'PAR_C'	6	3	1
-'BdbLWR_C'	6	3	1
-'BdbFilledR_C'	6	3	1
-'BdbLength_C'	6	3	1
-'BdbWidth_C'	6	3	1
-'MajAxisLength_C'	6	3	1
-'MinAxisLength_C'	6	3	1
-'AxisMajMinR_C'	6	3	1
-'Solidity_C'	6	3	1
-'CvxHPPR_C'	6	3	1
-'EquivDiameter_C'	6	3	1
-'Eccentricity_C'	6	3	1
-'Area_NCR'	6	"[1,3]"	1
-'Perimeter_NCR'	6	"[1,3]"	1
-'Eccentricity_NCR'	6	"[1,3]"	1
-'Solidity_NCR'	6	"[1,3]"	1
+name	category_id	channel_id	use	use_2ch	use_all
+'H2B_DItot'	1	1	0	1	1
+'H2B_DIav'	1	1	0	1	1
+'H2B_DI5'	1	1	0	1	1
+'H2B_DI20'	1	1	0	1	1
+'H2B_DI50'	1	1	0	1	1
+'H2B_DI80'	1	1	0	1	1
+'H2B_DI95'	1	1	0	1	1
+'H2B_CItot'	1	1	0	1	1
+'H2B_CIav'	1	1	0	1	1
+'H2B_CI5'	1	1	0	1	1
+'H2B_CI20'	1	1	0	1	1
+'H2B_CI50'	1	1	0	1	1
+'H2B_CI80'	1	1	0	1	1
+'H2B_CI95'	1	1	0	1	1
+'H2B_YItot'	1	1	0	1	1
+'H2B_YIav'	1	1	0	1	1
+'H2B_YI5'	1	1	0	1	1
+'H2B_YI20'	1	1	0	1	1
+'H2B_YI50'	1	1	0	1	1
+'H2B_YI80'	1	1	0	1	1
+'H2B_YI95'	1	1	0	1	1
+'H2B_RDCItot'	1	1	0	1	1
+'H2B_RDCIav'	1	1	0	1	1
+'H2B_RDCI50'	1	1	0	1	1
+'H2B_RDYItot'	1	1	0	1	1
+'H2B_RDYIav'	1	1	0	1	1
+'H2B_RDYI50'	1	1	0	1	1
+'H2B_RYCItot'	1	1	0	1	1
+'H2B_RYCIav'	1	1	0	1	1
+'H2B_RYCI50'	1	1	0	1	1
+'SET_DItot'	1	2	1	0	1
+'SET_DIav'	1	2	1	0	1
+'SET_DI5'	1	2	1	0	1
+'SET_DI20'	1	2	1	0	1
+'SET_DI50'	1	2	1	0	1
+'SET_DI80'	1	2	1	0	1
+'SET_DI95'	1	2	1	0	1
+'SET_CItot'	1	2	1	0	1
+'SET_CIav'	1	2	1	0	1
+'SET_CI5'	1	2	1	0	1
+'SET_CI20'	1	2	1	0	1
+'SET_CI50'	1	2	1	0	1
+'SET_CI80'	1	2	1	0	1
+'SET_CI95'	1	2	1	0	1
+'SET_YItot'	1	2	1	0	1
+'SET_YIav'	1	2	1	0	1
+'SET_YI5'	1	2	1	0	1
+'SET_YI20'	1	2	1	0	1
+'SET_YI50'	1	2	1	0	1
+'SET_YI80'	1	2	1	0	1
+'SET_YI95'	1	2	1	0	1
+'SET_RDCItot'	1	2	1	0	1
+'SET_RDCIav'	1	2	1	0	1
+'SET_RDCI50'	1	2	1	0	1
+'SET_RDYItot'	1	2	1	0	1
+'SET_RDYIav'	1	2	1	0	1
+'SET_RDYI50'	1	2	1	0	1
+'SET_RYCItot'	1	2	1	0	1
+'SET_RYCIav'	1	2	1	0	1
+'SET_RYCI50'	1	2	1	0	1
+'CYTO_DItot'	1	3	0	1	1
+'CYTO_DIav'	1	3	0	1	1
+'CYTO_DI5'	1	3	0	1	1
+'CYTO_DI20'	1	3	0	1	1
+'CYTO_DI50'	1	3	0	1	1
+'CYTO_DI80'	1	3	0	1	1
+'CYTO_DI95'	1	3	0	1	1
+'CYTO_CItot'	1	3	0	1	1
+'CYTO_CIav'	1	3	0	1	1
+'CYTO_CI5'	1	3	0	1	1
+'CYTO_CI20'	1	3	0	1	1
+'CYTO_CI50'	1	3	0	1	1
+'CYTO_CI80'	1	3	0	1	1
+'CYTO_CI95'	1	3	0	1	1
+'CYTO_YItot'	1	3	0	1	1
+'CYTO_YIav'	1	3	0	1	1
+'CYTO_YI5'	1	3	0	1	1
+'CYTO_YI20'	1	3	0	1	1
+'CYTO_YI50'	1	3	0	1	1
+'CYTO_YI80'	1	3	0	1	1
+'CYTO_YI95'	1	3	0	1	1
+'CYTO_RDCItot'	1	3	0	1	1
+'CYTO_RDCIav'	1	3	0	1	1
+'CYTO_RDCI50'	1	3	0	1	1
+'CYTO_RDYItot'	1	3	0	1	1
+'CYTO_RDYIav'	1	3	0	1	1
+'CYTO_RDYI50'	1	3	0	1	1
+'CYTO_RYCItot'	1	3	0	1	1
+'CYTO_RYCIav'	1	3	0	1	1
+'CYTO_RYCI50'	1	3	0	1	1
+'H2BSET_RDItot'	1	"[1,2]"	0	0	1
+'H2BSET_RDI50'	1	"[1,2]"	0	0	1
+'H2BSET_RCItot'	1	"[1,2]"	0	0	1
+'H2BSET_RCI50'	1	"[1,2]"	0	0	1
+'H2BSET_RYItot'	1	"[1,2]"	0	0	1
+'H2BSET_RYI50'	1	"[1,2]"	0	0	1
+'H2BCYTO_RDItot'	1	"[1,3]"	0	1	1
+'H2BCYTO_RDI50'	1	"[1,3]"	0	1	1
+'H2BCYTO_RCItot'	1	"[1,3]"	0	1	1
+'H2BCYTO_RCI50'	1	"[1,3]"	0	1	1
+'H2BCYTO_RYItot'	1	"[1,3]"	0	1	1
+'H2BCYTO_RYI50'	1	"[1,3]"	0	1	1
+'SETCYTO_RDItot'	1	"[2,3]"	0	0	1
+'SETCYTO_RDI50'	1	"[2,3]"	0	0	1
+'SETCYTO_RCItot'	1	"[2,3]"	0	0	1
+'SETCYTO_RCI50'	1	"[2,3]"	0	0	1
+'SETCYTO_RYItot'	1	"[2,3]"	0	0	1
+'SETCYTO_RYI50'	1	"[2,3]"	0	0	1
+'object_number_in_cell_region'	2	1	0	1	1
+'mean_object_area_in_cell_region'	2	1	0	1	1
+'stddev_object_area_in_cell_region'	2	1	0	1	1
+'coeff_variance_area_in_cell_region'	2	1	0	1	1
+'max_to_min_object_area_ratio_in_cell_region'	2	1	0	1	1
+'mean_object_eccentricity_in_cell_region'	2	1	0	1	1
+'stddev_object_eccentricity_in_cell_region'	2	1	0	1	1
+'coeff_variance_eccentricity_in_cell_region'	2	1	0	1	1
+'max_to_min_object_eccentricity_ratio_in_cell_region'	2	1	0	1	1
+'mean_object_perimeter_in_cell_region'	2	1	0	1	1
+'stddev_object_perimeter_in_cell_region'	2	1	0	1	1
+'coeff_variance_perimeter_in_cell_region'	2	1	0	1	1
+'max_to_min_object_perimeter_ratio_in_cell_region'	2	1	0	1	1
+'mean_object_majoraxislength_in_cell_region'	2	1	0	1	1
+'stddev_object_majoraxislength_in_cell_region'	2	1	0	1	1
+'coeff_variance_majoraxislength_in_cell_region'	2	1	0	1	1
+'max_to_min_object_majoraxislength_ratio_in_cell_region'	2	1	0	1	1
+'region_area_in_cell_region'	2	1	0	1	1
+'region_eulernumber_in_cell_region'	2	1	0	1	1
+'region_eccentricity_in_cell_region'	2	1	0	1	1
+'region_solidity_in_cell_region'	2	1	0	1	1
+'region_perimeter_in_cell_region'	2	1	0	1	1
+'region_majoraxislength_in_cell_region'	2	1	0	1	1
+'object_number_in_cell_region'	2	2	1	0	1
+'mean_object_area_in_cell_region'	2	2	1	0	1
+'stddev_object_area_in_cell_region'	2	2	1	0	1
+'coeff_variance_area_in_cell_region'	2	2	1	0	1
+'max_to_min_object_area_ratio_in_cell_region'	2	2	1	0	1
+'mean_object_eccentricity_in_cell_region'	2	2	1	0	1
+'stddev_object_eccentricity_in_cell_region'	2	2	1	0	1
+'coeff_variance_eccentricity_in_cell_region'	2	2	1	0	1
+'max_to_min_object_eccentricity_ratio_in_cell_region'	2	2	1	0	1
+'mean_object_perimeter_in_cell_region'	2	2	1	0	1
+'stddev_object_perimeter_in_cell_region'	2	2	1	0	1
+'coeff_variance_perimeter_in_cell_region'	2	2	1	0	1
+'max_to_min_object_perimeter_ratio_in_cell_region'	2	2	1	0	1
+'mean_object_majoraxislength_in_cell_region'	2	2	1	0	1
+'stddev_object_majoraxislength_in_cell_region'	2	2	1	0	1
+'coeff_variance_majoraxislength_in_cell_region'	2	2	1	0	1
+'max_to_min_object_majoraxislength_ratio_in_cell_region'	2	2	1	0	1
+'region_area_in_cell_region'	2	2	1	0	1
+'region_eulernumber_in_cell_region'	2	2	1	0	1
+'region_eccentricity_in_cell_region'	2	2	1	0	1
+'region_solidity_in_cell_region'	2	2	1	0	1
+'region_perimeter_in_cell_region'	2	2	1	0	1
+'region_majoraxislength_in_cell_region'	2	2	1	0	1
+'object_number_in_cell_region'	2	3	0	1	1
+'mean_object_area_in_cell_region'	2	3	0	1	1
+'stddev_object_area_in_cell_region'	2	3	0	1	1
+'coeff_variance_area_in_cell_region'	2	3	0	1	1
+'max_to_min_object_area_ratio_in_cell_region'	2	3	0	1	1
+'mean_object_eccentricity_in_cell_region'	2	3	0	1	1
+'stddev_object_eccentricity_in_cell_region'	2	3	0	1	1
+'coeff_variance_eccentricity_in_cell_region'	2	3	0	1	1
+'max_to_min_object_eccentricity_ratio_in_cell_region'	2	3	0	1	1
+'mean_object_perimeter_in_cell_region'	2	3	0	1	1
+'stddev_object_perimeter_in_cell_region'	2	3	0	1	1
+'coeff_variance_perimeter_in_cell_region'	2	3	0	1	1
+'max_to_min_object_perimeter_ratio_in_cell_region'	2	3	0	1	1
+'mean_object_majoraxislength_in_cell_region'	2	3	0	1	1
+'stddev_object_majoraxislength_in_cell_region'	2	3	0	1	1
+'coeff_variance_majoraxislength_in_cell_region'	2	3	0	1	1
+'max_to_min_object_majoraxislength_ratio_in_cell_region'	2	3	0	1	1
+'region_area_in_cell_region'	2	3	0	1	1
+'region_eulernumber_in_cell_region'	2	3	0	1	1
+'region_eccentricity_in_cell_region'	2	3	0	1	1
+'region_solidity_in_cell_region'	2	3	0	1	1
+'region_perimeter_in_cell_region'	2	3	0	1	1
+'region_majoraxislength_in_cell_region'	2	3	0	1	1
+'object_number_in_dna_region'	2	1	0	1	1
+'mean_object_area_in_dna_region'	2	1	0	1	1
+'stddev_object_area_in_dna_region'	2	1	0	1	1
+'coeff_variance_area_in_dna_region'	2	1	0	1	1
+'max_to_min_object_area_ratio_in_dna_region'	2	1	0	1	1
+'mean_object_eccentricity_in_dna_region'	2	1	0	1	1
+'stddev_object_eccentricity_in_dna_region'	2	1	0	1	1
+'coeff_variance_eccentricity_in_dna_region'	2	1	0	1	1
+'max_to_min_object_eccentricity_ratio_in_dna_region'	2	1	0	1	1
+'mean_object_perimeter_in_dna_region'	2	1	0	1	1
+'stddev_object_perimeter_in_dna_region'	2	1	0	1	1
+'coeff_variance_perimeter_in_dna_region'	2	1	0	1	1
+'max_to_min_object_perimeter_ratio_in_dna_region'	2	1	0	1	1
+'mean_object_majoraxislength_in_dna_region'	2	1	0	1	1
+'stddev_object_majoraxislength_in_dna_region'	2	1	0	1	1
+'coeff_variance_majoraxislength_in_dna_region'	2	1	0	1	1
+'max_to_min_object_majoraxislength_ratio_in_dna_region'	2	1	0	1	1
+'region_area_in_dna_region'	2	1	0	1	1
+'region_eulernumber_in_dna_region'	2	1	0	1	1
+'region_eccentricity_in_dna_region'	2	1	0	1	1
+'region_solidity_in_dna_region'	2	1	0	1	1
+'region_perimeter_in_dna_region'	2	1	0	1	1
+'region_majoraxislength_in_dna_region'	2	1	0	1	1
+'object_number_in_dna_region'	2	2	1	0	1
+'mean_object_area_in_dna_region'	2	2	1	0	1
+'stddev_object_area_in_dna_region'	2	2	1	0	1
+'coeff_variance_area_in_dna_region'	2	2	1	0	1
+'max_to_min_object_area_ratio_in_dna_region'	2	2	1	0	1
+'mean_object_eccentricity_in_dna_region'	2	2	1	0	1
+'stddev_object_eccentricity_in_dna_region'	2	2	1	0	1
+'coeff_variance_eccentricity_in_dna_region'	2	2	1	0	1
+'max_to_min_object_eccentricity_ratio_in_dna_region'	2	2	1	0	1
+'mean_object_perimeter_in_dna_region'	2	2	1	0	1
+'stddev_object_perimeter_in_dna_region'	2	2	1	0	1
+'coeff_variance_perimeter_in_dna_region'	2	2	1	0	1
+'max_to_min_object_perimeter_ratio_in_dna_region'	2	2	1	0	1
+'mean_object_majoraxislength_in_dna_region'	2	2	1	0	1
+'stddev_object_majoraxislength_in_dna_region'	2	2	1	0	1
+'coeff_variance_majoraxislength_in_dna_region'	2	2	1	0	1
+'max_to_min_object_majoraxislength_ratio_in_dna_region'	2	2	1	0	1
+'region_area_in_dna_region'	2	2	1	0	1
+'region_eulernumber_in_dna_region'	2	2	1	0	1
+'region_eccentricity_in_dna_region'	2	2	1	0	1
+'region_solidity_in_dna_region'	2	2	1	0	1
+'region_perimeter_in_dna_region'	2	2	1	0	1
+'region_majoraxislength_in_dna_region'	2	2	1	0	1
+'object_number_in_dna_region'	2	3	0	1	1
+'mean_object_area_in_dna_region'	2	3	0	1	1
+'stddev_object_area_in_dna_region'	2	3	0	1	1
+'coeff_variance_area_in_dna_region'	2	3	0	1	1
+'max_to_min_object_area_ratio_in_dna_region'	2	3	0	1	1
+'mean_object_eccentricity_in_dna_region'	2	3	0	1	1
+'stddev_object_eccentricity_in_dna_region'	2	3	0	1	1
+'coeff_variance_eccentricity_in_dna_region'	2	3	0	1	1
+'max_to_min_object_eccentricity_ratio_in_dna_region'	2	3	0	1	1
+'mean_object_perimeter_in_dna_region'	2	3	0	1	1
+'stddev_object_perimeter_in_dna_region'	2	3	0	1	1
+'coeff_variance_perimeter_in_dna_region'	2	3	0	1	1
+'max_to_min_object_perimeter_ratio_in_dna_region'	2	3	0	1	1
+'mean_object_majoraxislength_in_dna_region'	2	3	0	1	1
+'stddev_object_majoraxislength_in_dna_region'	2	3	0	1	1
+'coeff_variance_majoraxislength_in_dna_region'	2	3	0	1	1
+'max_to_min_object_majoraxislength_ratio_in_dna_region'	2	3	0	1	1
+'region_area_in_dna_region'	2	3	0	1	1
+'region_eulernumber_in_dna_region'	2	3	0	1	1
+'region_eccentricity_in_dna_region'	2	3	0	1	1
+'region_solidity_in_dna_region'	2	3	0	1	1
+'region_perimeter_in_dna_region'	2	3	0	1	1
+'region_majoraxislength_in_dna_region'	2	3	0	1	1
+'object_number_in_non_dna_region'	2	1	0	1	1
+'mean_object_area_in_non_dna_region'	2	1	0	1	1
+'stddev_object_area_in_non_dna_region'	2	1	0	1	1
+'coeff_variance_area_in_non_dna_region'	2	1	0	1	1
+'max_to_min_object_area_ratio_in_non_dna_region'	2	1	0	1	1
+'mean_object_eccentricity_in_non_dna_region'	2	1	0	1	1
+'stddev_object_eccentricity_in_non_dna_region'	2	1	0	1	1
+'coeff_variance_eccentricity_in_non_dna_region'	2	1	0	1	1
+'max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	1	0	1	1
+'mean_object_perimeter_in_non_dna_region'	2	1	0	1	1
+'stddev_object_perimeter_in_non_dna_region'	2	1	0	1	1
+'coeff_variance_perimeter_in_non_dna_region'	2	1	0	1	1
+'max_to_min_object_perimeter_ratio_in_non_dna_region'	2	1	0	1	1
+'mean_object_majoraxislength_in_non_dna_region'	2	1	0	1	1
+'stddev_object_majoraxislength_in_non_dna_region'	2	1	0	1	1
+'coeff_variance_majoraxislength_in_non_dna_region'	2	1	0	1	1
+'max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	1	0	1	1
+'region_area_in_non_dna_region'	2	1	0	1	1
+'region_eulernumber_in_non_dna_region'	2	1	0	1	1
+'region_eccentricity_in_non_dna_region'	2	1	0	1	1
+'region_solidity_in_non_dna_region'	2	1	0	1	1
+'region_perimeter_in_non_dna_region'	2	1	0	1	1
+'region_majoraxislength_in_non_dna_region'	2	1	0	1	1
+'object_number_in_non_dna_region'	2	2	1	0	1
+'mean_object_area_in_non_dna_region'	2	2	1	0	1
+'stddev_object_area_in_non_dna_region'	2	2	1	0	1
+'coeff_variance_area_in_non_dna_region'	2	2	1	0	1
+'max_to_min_object_area_ratio_in_non_dna_region'	2	2	1	0	1
+'mean_object_eccentricity_in_non_dna_region'	2	2	1	0	1
+'stddev_object_eccentricity_in_non_dna_region'	2	2	1	0	1
+'coeff_variance_eccentricity_in_non_dna_region'	2	2	1	0	1
+'max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	2	1	0	1
+'mean_object_perimeter_in_non_dna_region'	2	2	1	0	1
+'stddev_object_perimeter_in_non_dna_region'	2	2	1	0	1
+'coeff_variance_perimeter_in_non_dna_region'	2	2	1	0	1
+'max_to_min_object_perimeter_ratio_in_non_dna_region'	2	2	1	0	1
+'mean_object_majoraxislength_in_non_dna_region'	2	2	1	0	1
+'stddev_object_majoraxislength_in_non_dna_region'	2	2	1	0	1
+'coeff_variance_majoraxislength_in_non_dna_region'	2	2	1	0	1
+'max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	2	1	0	1
+'region_area_in_non_dna_region'	2	2	1	0	1
+'region_eulernumber_in_non_dna_region'	2	2	1	0	1
+'region_eccentricity_in_non_dna_region'	2	2	1	0	1
+'region_solidity_in_non_dna_region'	2	2	1	0	1
+'region_perimeter_in_non_dna_region'	2	2	1	0	1
+'region_majoraxislength_in_non_dna_region'	2	2	1	0	1
+'object_number_in_non_dna_region'	2	3	0	1	1
+'mean_object_area_in_non_dna_region'	2	3	0	1	1
+'stddev_object_area_in_non_dna_region'	2	3	0	1	1
+'coeff_variance_area_in_non_dna_region'	2	3	0	1	1
+'max_to_min_object_area_ratio_in_non_dna_region'	2	3	0	1	1
+'mean_object_eccentricity_in_non_dna_region'	2	3	0	1	1
+'stddev_object_eccentricity_in_non_dna_region'	2	3	0	1	1
+'coeff_variance_eccentricity_in_non_dna_region'	2	3	0	1	1
+'max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	3	0	1	1
+'mean_object_perimeter_in_non_dna_region'	2	3	0	1	1
+'stddev_object_perimeter_in_non_dna_region'	2	3	0	1	1
+'coeff_variance_perimeter_in_non_dna_region'	2	3	0	1	1
+'max_to_min_object_perimeter_ratio_in_non_dna_region'	2	3	0	1	1
+'mean_object_majoraxislength_in_non_dna_region'	2	3	0	1	1
+'stddev_object_majoraxislength_in_non_dna_region'	2	3	0	1	1
+'coeff_variance_majoraxislength_in_non_dna_region'	2	3	0	1	1
+'max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	3	0	1	1
+'region_area_in_non_dna_region'	2	3	0	1	1
+'region_eulernumber_in_non_dna_region'	2	3	0	1	1
+'region_eccentricity_in_non_dna_region'	2	3	0	1	1
+'region_solidity_in_non_dna_region'	2	3	0	1	1
+'region_perimeter_in_non_dna_region'	2	3	0	1	1
+'region_majoraxislength_in_non_dna_region'	2	3	0	1	1
+'ratio_of_object_number_in_dna_region_to_object_number_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_mean_object_area_in_dna_region_to_mean_object_area_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_stddev_object_area_in_dna_region_to_stddev_object_area_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_coeff_variance_area_in_dna_region_to_coeff_variance_area_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_max_to_min_object_area_ratio_in_dna_region_to_max_to_min_object_area_ratio_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_mean_object_eccentricity_in_dna_region_to_mean_object_eccentricity_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_stddev_object_eccentricity_in_dna_region_to_stddev_object_eccentricity_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_coeff_variance_eccentricity_in_dna_region_to_coeff_variance_eccentricity_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_max_to_min_object_eccentricity_ratio_in_dna_region_to_max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_mean_object_perimeter_in_dna_region_to_mean_object_perimeter_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_stddev_object_perimeter_in_dna_region_to_stddev_object_perimeter_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_coeff_variance_perimeter_in_dna_region_to_coeff_variance_perimeter_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_max_to_min_object_perimeter_ratio_in_dna_region_to_max_to_min_object_perimeter_ratio_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_mean_object_majoraxislength_in_dna_region_to_mean_object_majoraxislength_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_stddev_object_majoraxislength_in_dna_region_to_stddev_object_majoraxislength_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_coeff_variance_majoraxislength_in_dna_region_to_coeff_variance_majoraxislength_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_max_to_min_object_majoraxislength_ratio_in_dna_region_to_max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_region_area_in_dna_region_to_region_area_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_region_eulernumber_in_dna_region_to_region_eulernumber_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_region_eccentricity_in_dna_region_to_region_eccentricity_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_region_solidity_in_dna_region_to_region_solidity_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_region_perimeter_in_dna_region_to_region_perimeter_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_region_majoraxislength_in_dna_region_to_region_majoraxislength_in_non_dna_region'	2	"[1,1]"	0	1	1
+'ratio_of_object_number_in_dna_region_to_object_number_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_mean_object_area_in_dna_region_to_mean_object_area_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_stddev_object_area_in_dna_region_to_stddev_object_area_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_coeff_variance_area_in_dna_region_to_coeff_variance_area_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_max_to_min_object_area_ratio_in_dna_region_to_max_to_min_object_area_ratio_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_mean_object_eccentricity_in_dna_region_to_mean_object_eccentricity_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_stddev_object_eccentricity_in_dna_region_to_stddev_object_eccentricity_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_coeff_variance_eccentricity_in_dna_region_to_coeff_variance_eccentricity_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_max_to_min_object_eccentricity_ratio_in_dna_region_to_max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_mean_object_perimeter_in_dna_region_to_mean_object_perimeter_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_stddev_object_perimeter_in_dna_region_to_stddev_object_perimeter_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_coeff_variance_perimeter_in_dna_region_to_coeff_variance_perimeter_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_max_to_min_object_perimeter_ratio_in_dna_region_to_max_to_min_object_perimeter_ratio_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_mean_object_majoraxislength_in_dna_region_to_mean_object_majoraxislength_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_stddev_object_majoraxislength_in_dna_region_to_stddev_object_majoraxislength_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_coeff_variance_majoraxislength_in_dna_region_to_coeff_variance_majoraxislength_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_max_to_min_object_majoraxislength_ratio_in_dna_region_to_max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_region_area_in_dna_region_to_region_area_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_region_eulernumber_in_dna_region_to_region_eulernumber_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_region_eccentricity_in_dna_region_to_region_eccentricity_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_region_solidity_in_dna_region_to_region_solidity_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_region_perimeter_in_dna_region_to_region_perimeter_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_region_majoraxislength_in_dna_region_to_region_majoraxislength_in_non_dna_region'	2	"[2,2]"	1	0	1
+'ratio_of_object_number_in_dna_region_to_object_number_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_mean_object_area_in_dna_region_to_mean_object_area_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_stddev_object_area_in_dna_region_to_stddev_object_area_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_coeff_variance_area_in_dna_region_to_coeff_variance_area_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_max_to_min_object_area_ratio_in_dna_region_to_max_to_min_object_area_ratio_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_mean_object_eccentricity_in_dna_region_to_mean_object_eccentricity_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_stddev_object_eccentricity_in_dna_region_to_stddev_object_eccentricity_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_coeff_variance_eccentricity_in_dna_region_to_coeff_variance_eccentricity_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_max_to_min_object_eccentricity_ratio_in_dna_region_to_max_to_min_object_eccentricity_ratio_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_mean_object_perimeter_in_dna_region_to_mean_object_perimeter_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_stddev_object_perimeter_in_dna_region_to_stddev_object_perimeter_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_coeff_variance_perimeter_in_dna_region_to_coeff_variance_perimeter_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_max_to_min_object_perimeter_ratio_in_dna_region_to_max_to_min_object_perimeter_ratio_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_mean_object_majoraxislength_in_dna_region_to_mean_object_majoraxislength_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_stddev_object_majoraxislength_in_dna_region_to_stddev_object_majoraxislength_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_coeff_variance_majoraxislength_in_dna_region_to_coeff_variance_majoraxislength_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_max_to_min_object_majoraxislength_ratio_in_dna_region_to_max_to_min_object_majoraxislength_ratio_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_region_area_in_dna_region_to_region_area_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_region_eulernumber_in_dna_region_to_region_eulernumber_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_region_eccentricity_in_dna_region_to_region_eccentricity_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_region_solidity_in_dna_region_to_region_solidity_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_region_perimeter_in_dna_region_to_region_perimeter_in_non_dna_region'	2	"[3,3]"	0	1	1
+'ratio_of_region_majoraxislength_in_dna_region_to_region_majoraxislength_in_non_dna_region'	2	"[3,3]"	0	1	1
+'distance_between_binary_centroid_and_intensity_centroid'	3	1	0	1	1
+'distance_between_binary_centroid_and_cell_mask_centroid'	3	1	0	1	1
+'distance_between_intensity_centroid_and_cell_mask_centroid'	3	1	0	1	1
+'distance_between_binary_centroid_and_dna_mask_centroid'	3	1	0	1	1
+'distance_between_intensity_centroid_and_dna_mask_centroid'	3	1	0	1	1
+'distance_between_binary_centroid_and_intensity_centroid'	3	2	1	0	1
+'distance_between_binary_centroid_and_cell_mask_centroid'	3	2	1	0	1
+'distance_between_intensity_centroid_and_cell_mask_centroid'	3	2	1	0	1
+'distance_between_binary_centroid_and_dna_mask_centroid'	3	2	1	0	1
+'distance_between_intensity_centroid_and_dna_mask_centroid'	3	2	1	0	1
+'distance_between_binary_centroid_and_intensity_centroid'	3	3	0	1	1
+'distance_between_binary_centroid_and_cell_mask_centroid'	3	3	0	1	1
+'distance_between_intensity_centroid_and_cell_mask_centroid'	3	3	0	1	1
+'distance_between_binary_centroid_and_dna_mask_centroid'	3	3	0	1	1
+'distance_between_intensity_centroid_and_dna_mask_centroid'	3	3	0	1	1
+'distance_between_intensity_centroid_and_intensity_centroid'	3	"[1,2]"	0	0	1
+'distance_between_intensity_centroid_and_intensity_centroid'	3	"[1,3]"	0	1	1
+'distance_between_intensity_centroid_and_intensity_centroid'	3	"[2,3]"	0	0	1
+'zernike_0-0'	4	1	0	1	1
+'zernike_1-1'	4	1	0	1	1
+'zernike_2-0'	4	1	0	1	1
+'zernike_2-2'	4	1	0	1	1
+'zernike_3-1'	4	1	0	1	1
+'zernike_3-3'	4	1	0	1	1
+'zernike_4-0'	4	1	0	1	1
+'zernike_4-2'	4	1	0	1	1
+'zernike_4-4'	4	1	0	1	1
+'zernike_5-1'	4	1	0	1	1
+'zernike_5-3'	4	1	0	1	1
+'zernike_5-5'	4	1	0	1	1
+'zernike_6-0'	4	1	0	1	1
+'zernike_6-2'	4	1	0	1	1
+'zernike_6-4'	4	1	0	1	1
+'zernike_6-6'	4	1	0	1	1
+'zernike_7-1'	4	1	0	1	1
+'zernike_7-3'	4	1	0	1	1
+'zernike_7-5'	4	1	0	1	1
+'zernike_7-7'	4	1	0	1	1
+'zernike_8-0'	4	1	0	1	1
+'zernike_8-2'	4	1	0	1	1
+'zernike_8-4'	4	1	0	1	1
+'zernike_8-6'	4	1	0	1	1
+'zernike_8-8'	4	1	0	1	1
+'zernike_9-1'	4	1	0	1	1
+'zernike_9-3'	4	1	0	1	1
+'zernike_9-5'	4	1	0	1	1
+'zernike_9-7'	4	1	0	1	1
+'zernike_9-9'	4	1	0	1	1
+'zernike_10-0'	4	1	0	1	1
+'zernike_10-2'	4	1	0	1	1
+'zernike_10-4'	4	1	0	1	1
+'zernike_10-6'	4	1	0	1	1
+'zernike_10-8'	4	1	0	1	1
+'zernike_10-10'	4	1	0	1	1
+'zernike_11-1'	4	1	0	1	1
+'zernike_11-3'	4	1	0	1	1
+'zernike_11-5'	4	1	0	1	1
+'zernike_11-7'	4	1	0	1	1
+'zernike_11-9'	4	1	0	1	1
+'zernike_11-11'	4	1	0	1	1
+'zernike_12-0'	4	1	0	1	1
+'zernike_12-2'	4	1	0	1	1
+'zernike_12-4'	4	1	0	1	1
+'zernike_12-6'	4	1	0	1	1
+'zernike_12-8'	4	1	0	1	1
+'zernike_12-10'	4	1	0	1	1
+'zernike_12-12'	4	1	0	1	1
+'zernike_0-0'	4	2	1	0	1
+'zernike_1-1'	4	2	1	0	1
+'zernike_2-0'	4	2	1	0	1
+'zernike_2-2'	4	2	1	0	1
+'zernike_3-1'	4	2	1	0	1
+'zernike_3-3'	4	2	1	0	1
+'zernike_4-0'	4	2	1	0	1
+'zernike_4-2'	4	2	1	0	1
+'zernike_4-4'	4	2	1	0	1
+'zernike_5-1'	4	2	1	0	1
+'zernike_5-3'	4	2	1	0	1
+'zernike_5-5'	4	2	1	0	1
+'zernike_6-0'	4	2	1	0	1
+'zernike_6-2'	4	2	1	0	1
+'zernike_6-4'	4	2	1	0	1
+'zernike_6-6'	4	2	1	0	1
+'zernike_7-1'	4	2	1	0	1
+'zernike_7-3'	4	2	1	0	1
+'zernike_7-5'	4	2	1	0	1
+'zernike_7-7'	4	2	1	0	1
+'zernike_8-0'	4	2	1	0	1
+'zernike_8-2'	4	2	1	0	1
+'zernike_8-4'	4	2	1	0	1
+'zernike_8-6'	4	2	1	0	1
+'zernike_8-8'	4	2	1	0	1
+'zernike_9-1'	4	2	1	0	1
+'zernike_9-3'	4	2	1	0	1
+'zernike_9-5'	4	2	1	0	1
+'zernike_9-7'	4	2	1	0	1
+'zernike_9-9'	4	2	1	0	1
+'zernike_10-0'	4	2	1	0	1
+'zernike_10-2'	4	2	1	0	1
+'zernike_10-4'	4	2	1	0	1
+'zernike_10-6'	4	2	1	0	1
+'zernike_10-8'	4	2	1	0	1
+'zernike_10-10'	4	2	1	0	1
+'zernike_11-1'	4	2	1	0	1
+'zernike_11-3'	4	2	1	0	1
+'zernike_11-5'	4	2	1	0	1
+'zernike_11-7'	4	2	1	0	1
+'zernike_11-9'	4	2	1	0	1
+'zernike_11-11'	4	2	1	0	1
+'zernike_12-0'	4	2	1	0	1
+'zernike_12-2'	4	2	1	0	1
+'zernike_12-4'	4	2	1	0	1
+'zernike_12-6'	4	2	1	0	1
+'zernike_12-8'	4	2	1	0	1
+'zernike_12-10'	4	2	1	0	1
+'zernike_12-12'	4	2	1	0	1
+'zernike_0-0'	4	3	0	1	1
+'zernike_1-1'	4	3	0	1	1
+'zernike_2-0'	4	3	0	1	1
+'zernike_2-2'	4	3	0	1	1
+'zernike_3-1'	4	3	0	1	1
+'zernike_3-3'	4	3	0	1	1
+'zernike_4-0'	4	3	0	1	1
+'zernike_4-2'	4	3	0	1	1
+'zernike_4-4'	4	3	0	1	1
+'zernike_5-1'	4	3	0	1	1
+'zernike_5-3'	4	3	0	1	1
+'zernike_5-5'	4	3	0	1	1
+'zernike_6-0'	4	3	0	1	1
+'zernike_6-2'	4	3	0	1	1
+'zernike_6-4'	4	3	0	1	1
+'zernike_6-6'	4	3	0	1	1
+'zernike_7-1'	4	3	0	1	1
+'zernike_7-3'	4	3	0	1	1
+'zernike_7-5'	4	3	0	1	1
+'zernike_7-7'	4	3	0	1	1
+'zernike_8-0'	4	3	0	1	1
+'zernike_8-2'	4	3	0	1	1
+'zernike_8-4'	4	3	0	1	1
+'zernike_8-6'	4	3	0	1	1
+'zernike_8-8'	4	3	0	1	1
+'zernike_9-1'	4	3	0	1	1
+'zernike_9-3'	4	3	0	1	1
+'zernike_9-5'	4	3	0	1	1
+'zernike_9-7'	4	3	0	1	1
+'zernike_9-9'	4	3	0	1	1
+'zernike_10-0'	4	3	0	1	1
+'zernike_10-2'	4	3	0	1	1
+'zernike_10-4'	4	3	0	1	1
+'zernike_10-6'	4	3	0	1	1
+'zernike_10-8'	4	3	0	1	1
+'zernike_10-10'	4	3	0	1	1
+'zernike_11-1'	4	3	0	1	1
+'zernike_11-3'	4	3	0	1	1
+'zernike_11-5'	4	3	0	1	1
+'zernike_11-7'	4	3	0	1	1
+'zernike_11-9'	4	3	0	1	1
+'zernike_11-11'	4	3	0	1	1
+'zernike_12-0'	4	3	0	1	1
+'zernike_12-2'	4	3	0	1	1
+'zernike_12-4'	4	3	0	1	1
+'zernike_12-6'	4	3	0	1	1
+'zernike_12-8'	4	3	0	1	1
+'zernike_12-10'	4	3	0	1	1
+'zernike_12-12'	4	3	0	1	1
+'haralick_ASM_mean'	5	1	0	1	1
+'haralick_contrast_mean'	5	1	0	1	1
+'haralick_correlation_mean'	5	1	0	1	1
+'haralick_variance_mean'	5	1	0	1	1
+'haralick_IDM_mean'	5	1	0	1	1
+'haralick_sum_avg_mean'	5	1	0	1	1
+'haralick_sum_var_mean'	5	1	0	1	1
+'haralick_sum_entropy_mean'	5	1	0	1	1
+'haralick_entropy_mean'	5	1	0	1	1
+'haralick_diff_var_mean'	5	1	0	1	1
+'haralick_diff_entropy_mean'	5	1	0	1	1
+'haralick_meas_corr1_mean'	5	1	0	1	1
+'haralick_meas_corr2_mean'	5	1	0	1	1
+'haralick_ASM_stddev'	5	1	0	1	1
+'haralick_contrast_stddev'	5	1	0	1	1
+'haralick_correlation_stddev'	5	1	0	1	1
+'haralick_variance_stddev'	5	1	0	1	1
+'haralick_IDM_stddev'	5	1	0	1	1
+'haralick_sum_avg_stddev'	5	1	0	1	1
+'haralick_sum_var_stddev'	5	1	0	1	1
+'haralick_sum_entropy_stddev'	5	1	0	1	1
+'haralick_entropy_stddev'	5	1	0	1	1
+'haralick_diff_var_stddev'	5	1	0	1	1
+'haralick_diff_entropy_stddev'	5	1	0	1	1
+'haralick_meas_corr1_stddev'	5	1	0	1	1
+'haralick_meas_corr2_stddev'	5	1	0	1	1
+'haralick_ASM_mean'	5	2	1	0	1
+'haralick_contrast_mean'	5	2	1	0	1
+'haralick_correlation_mean'	5	2	1	0	1
+'haralick_variance_mean'	5	2	1	0	1
+'haralick_IDM_mean'	5	2	1	0	1
+'haralick_sum_avg_mean'	5	2	1	0	1
+'haralick_sum_var_mean'	5	2	1	0	1
+'haralick_sum_entropy_mean'	5	2	1	0	1
+'haralick_entropy_mean'	5	2	1	0	1
+'haralick_diff_var_mean'	5	2	1	0	1
+'haralick_diff_entropy_mean'	5	2	1	0	1
+'haralick_meas_corr1_mean'	5	2	1	0	1
+'haralick_meas_corr2_mean'	5	2	1	0	1
+'haralick_ASM_stddev'	5	2	1	0	1
+'haralick_contrast_stddev'	5	2	1	0	1
+'haralick_correlation_stddev'	5	2	1	0	1
+'haralick_variance_stddev'	5	2	1	0	1
+'haralick_IDM_stddev'	5	2	1	0	1
+'haralick_sum_avg_stddev'	5	2	1	0	1
+'haralick_sum_var_stddev'	5	2	1	0	1
+'haralick_sum_entropy_stddev'	5	2	1	0	1
+'haralick_entropy_stddev'	5	2	1	0	1
+'haralick_diff_var_stddev'	5	2	1	0	1
+'haralick_diff_entropy_stddev'	5	2	1	0	1
+'haralick_meas_corr1_stddev'	5	2	1	0	1
+'haralick_meas_corr2_stddev'	5	2	1	0	1
+'haralick_ASM_mean'	5	3	0	1	1
+'haralick_contrast_mean'	5	3	0	1	1
+'haralick_correlation_mean'	5	3	0	1	1
+'haralick_variance_mean'	5	3	0	1	1
+'haralick_IDM_mean'	5	3	0	1	1
+'haralick_sum_avg_mean'	5	3	0	1	1
+'haralick_sum_var_mean'	5	3	0	1	1
+'haralick_sum_entropy_mean'	5	3	0	1	1
+'haralick_entropy_mean'	5	3	0	1	1
+'haralick_diff_var_mean'	5	3	0	1	1
+'haralick_diff_entropy_mean'	5	3	0	1	1
+'haralick_meas_corr1_mean'	5	3	0	1	1
+'haralick_meas_corr2_mean'	5	3	0	1	1
+'haralick_ASM_stddev'	5	3	0	1	1
+'haralick_contrast_stddev'	5	3	0	1	1
+'haralick_correlation_stddev'	5	3	0	1	1
+'haralick_variance_stddev'	5	3	0	1	1
+'haralick_IDM_stddev'	5	3	0	1	1
+'haralick_sum_avg_stddev'	5	3	0	1	1
+'haralick_sum_var_stddev'	5	3	0	1	1
+'haralick_sum_entropy_stddev'	5	3	0	1	1
+'haralick_entropy_stddev'	5	3	0	1	1
+'haralick_diff_var_stddev'	5	3	0	1	1
+'haralick_diff_entropy_stddev'	5	3	0	1	1
+'haralick_meas_corr1_stddev'	5	3	0	1	1
+'haralick_meas_corr2_stddev'	5	3	0	1	1
+'Area_N'	6	1	1	1	1
+'Perimeter_N'	6	1	1	1	1
+'PAR_N'	6	1	1	1	1
+'BdbLWR_N'	6	1	1	1	1
+'BdbFilledR_N'	6	1	1	1	1
+'BdbLength_N'	6	1	1	1	1
+'BdbWidth_N'	6	1	1	1	1
+'MajAxisLength_N'	6	1	1	1	1
+'MinAxisLength_N'	6	1	1	1	1
+'AxisMajMinR_N'	6	1	1	1	1
+'Solidity_N'	6	1	1	1	1
+'CvxHPPR_N'	6	1	1	1	1
+'EquivDiameter_N'	6	1	1	1	1
+'Eccentricity_N'	6	1	1	1	1
+'Area_C'	6	3	1	1	1
+'Perimeter_C'	6	3	1	1	1
+'PAR_C'	6	3	1	1	1
+'BdbLWR_C'	6	3	1	1	1
+'BdbFilledR_C'	6	3	1	1	1
+'BdbLength_C'	6	3	1	1	1
+'BdbWidth_C'	6	3	1	1	1
+'MajAxisLength_C'	6	3	1	1	1
+'MinAxisLength_C'	6	3	1	1	1
+'AxisMajMinR_C'	6	3	1	1	1
+'Solidity_C'	6	3	1	1	1
+'CvxHPPR_C'	6	3	1	1	1
+'EquivDiameter_C'	6	3	1	1	1
+'Eccentricity_C'	6	3	1	1	1
+'Area_NCR'	6	"[1,3]"	1	1	1
+'Perimeter_NCR'	6	"[1,3]"	1	1	1
+'Eccentricity_NCR'	6	"[1,3]"	1	1	1
+'Solidity_NCR'	6	"[1,3]"	1	1	1
