@@ -52,19 +52,31 @@ batch='4L2K_5';
 thesebatchplates = ~ismember(plates.batch,batch);
 plates = plates(thesebatchplates,:);
 
-% batch='2017018_002';
-% thesebatchplates = ~ismember(plates.batch,batch);
-% plates = plates(thesebatchplates,:);
-% 
-% batch='2017018_003';
-% thesebatchplates = ~ismember(plates.batch,batch);
-% plates = plates(thesebatchplates,:);
+batch='2017018_002';
+thesebatchplates = ~ismember(plates.batch,batch);
+plates = plates(thesebatchplates,:);
+ 
+batch='2017018_003';
+thesebatchplates = ~ismember(plates.batch,batch);
+plates = plates(thesebatchplates,:);
 
-% batch='2017018_004';
-% thesebatchplates = ~ismember(plates.batch,batch);
-% plates = plates(thesebatchplates,:);
+batch='2017018_004';
+thesebatchplates = ~ismember(plates.batch,batch);
+plates = plates(thesebatchplates,:);
 
 batch='2017018_005';
+thesebatchplates = ~ismember(plates.batch,batch);
+plates = plates(thesebatchplates,:);
+
+batch='2017018_008';
+thesebatchplates = ~ismember(plates.batch,batch);
+plates = plates(thesebatchplates,:);
+
+batch='2017018_007';
+thesebatchplates = ~ismember(plates.batch,batch);
+plates = plates(thesebatchplates,:);
+
+batch='2017018_009';
 thesebatchplates = ~ismember(plates.batch,batch);
 plates = plates(thesebatchplates,:);
 
@@ -76,11 +88,19 @@ plate_type='carryover_ctrl';
 thesetypeplates = ~ismember(plates.plate_type,plate_type);
 plates = plates(thesetypeplates,:);
 
+plate_type='plating_ctrl';
+thesetypeplates = ~ismember(plates.plate_type,plate_type);
+plates = plates(thesetypeplates,:);
+
+plate_type='illum_ctrl';
+thesetypeplates = ~ismember(plates.plate_type,plate_type);
+plates = plates(thesetypeplates,:);
+
 thesereferenceplates = ismember(plates.plate_type,'reference_plate');
 referenceplates = plates(thesereferenceplates,:);
 
 clear thesebatchplates thesereferenceplates thesecellplates thesetypeplates theseyearplates thesecpdplates
-
+clc
 %% Generate Profiles
 LE_Gen_ProfilesInCell(plates,profiles_folder)
 
@@ -144,12 +164,10 @@ paras = Set_Paras('pVal_thr',pVal_thr,'max_nCtrl',max_nCtrl,'var_pct_to_keep',va
 plates.CellLine = categorical(plates.CellLine);
 referenceplates.CellLine = categorical(referenceplates.CellLine);
 plates.CellLine = categorical(plates.CellLine);            
-%getplotoptions()  
 
 %% Specify Bioactives
 
 plate_IDs = plates.expt_plate;
-%plate_IDs = plates.expt_plate;
 %plate_IDs = referenceplates.expt_plate;
 
 plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_NBT,qc_folder);
@@ -165,12 +183,12 @@ plate_cpd_bioactive_T=Plate2Table(plate_cpd_bioactive);
 plate_cpd_T=Plate2Table(plate_cpd);
 plate_ref_bioactive_T = Plate2Table(plate_ref_bioactive);
 
-writetable(plate_cpd_bioactive_T,strcat(results_folder,'screen_cpds_bioactive.xlsx'));
+writetable(plate_cpd_bioactive_T,strcat(results_folder,'screen_cpds_bioactive_008.xlsx'));
 
 is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
 plate3.drug_categories(is_inactive) = {'Nonbioactive'}; % not using Nonbioactive to do the PCA.
 bioactive = Plate2Table(plate3);
-writetable(bioactive,fullfile(results_folder,'_bioactivepvals_NBT.xlsx'))
+writetable(bioactive,fullfile(results_folder,'_bioactivepvals_NBT_005.xlsx'))
 plot_opt{1,2}{1,12}='Unknown';
 plot_opt_ALL{1,2}{1,35}='Unknown';
 Visualize_Plate_LE(plate_bioactive,plot_opt{:}); % or plot_opt_query -

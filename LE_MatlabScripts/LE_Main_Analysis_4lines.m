@@ -52,7 +52,7 @@ LE_Gen_Profiles(plates,'A549_NQO1',profiles_folder)
 for p = 1:height(plates)
     plateID = plates.expt_plate{p};
     load(fullfile(profiles_folder,strcat('plate_',plateID,'.mat')));
-    [~,~,~,use] = import_featuresselection('W:\2015_09_HTS_LE\Code_LE\LE_Analysis\LE_MatlabScripts\feature_select_NBT.txt');
+    [~,~,~,use,~,~] = import_featuresselection('W:\2015_09_HTS_LE\Code_LE\LE_Analysis\LE_MatlabScripts\feature_select_NBT.txt');
     for w = 1:size(plate.profiles,1)
         plate.profiles{w,1} = plate.profiles{w,1}(use);
     end
@@ -111,10 +111,10 @@ getplotoptions()
 plot_opt = plot_opt_ALL;
 
 % Visualize plates
-for c = 1:4
+for c = 1%:4
     cellplates = plates(plates.CellLine == pORACL{c},:);
     plateIDs = cellplates.expt_plate;
-    plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder_NBT,qc_folder);
+    plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder,qc_folder);
     
     anno_updater;
     
@@ -131,14 +131,12 @@ for c = 1:4
     is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
     plate3.drug_categories(is_inactive) = {'Nonbioactive'}; % not using Nonbioactive to do the PCA.
     bioactive = Plate2Table(plate3);
-    writetable(bioactive,fullfile(results_folder,strcat(pORACL{c},'_bioactivepvals_DMSObw_NBT.xlsx')))
-    
-    
+    %writetable(bioactive,fullfile(results_folder,strcat(pORACL{c},'_bioactivepvals_DMSObw_NBT.xlsx')))
     
     Visualize_Plate_LE(plate3,plot_opt{:});
     labelpcplot()
     title(pORACL{c});
-    saveas(gcf,fullfile(results_folder,pORACL{c}))
+    %saveas(gcf,fullfile(results_folder,pORACL{c}))
 end
 
 %%  Extract bioactivity files for RB XRCC5
@@ -178,10 +176,10 @@ ref_plate = {'reference_plate'};
 for c = 1%:4
 plateaccuracy = cell(6,2);    
 refplates = referenceplates(referenceplates.CellLine== pORACL{c},:);
-for p=1:height(refplates)
-    plateIDs = refplates.expt_plate;
-    %plate_IDs = plate_IDs(p);
-    plate = Load_Batch_LE(refplates,plateIDs, profiles_folder_NBT,qc_folder);
+for p=1%:height(refplates)
+    plate_IDs = refplates.expt_plate;
+    plateIDs = plate_IDs(p);
+    plate = Load_Batch_LE(refplates,plateIDs, profiles_folder,qc_folder);
     plate2 = Merge_Time_Points(plate,time_to_use,merge_mode);
     plate2 = Get_Bioactive_Compounds(plate2, HCSparas);
     % Get reference compounds
@@ -227,7 +225,7 @@ drug_category_strimmer
 
 plates = plates(plates.CellLine=='A549_XRCC5',:);
 plateIDs = cellplates.expt_plate;
-plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder_NBT,qc_folder); % note different profiles folder
+plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder,qc_folder); % note different profiles folder
 
 anno_updater;
 
@@ -288,7 +286,7 @@ profiles = cell(Nbatches,1);
 tree = cell(Nbatches,1);
 for b = 1:Nbatches
     disp(b)
-    %plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_NBT,qc_folder);
+    plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_NBT,qc_folder);
     [cluster_info{b}, profiles{b}, tree{b}] = Cluster_Compounds(plate_fda,HCSparas);
     cluster_info{b}.compound = cluster_info{b}.drug_names;
     cluster_info{b} = cluster_info{b}(:,col_order);

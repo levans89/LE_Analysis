@@ -6,6 +6,7 @@ function plate = Remove_Bad_Wells_from_Plate_LE(plates,plate,qc_folder)
 
 %% 1. Get plateID_bad_well labels
 bws = LE_Bad_Wells(plates,qc_folder);
+
 all_bad_wells = strcat(bws.PlateID,{'_'},bws.Well);
 plate_wells = strcat(plate.plateIDs,{'_'},plate.well_names);
 %% 2. Remove bad wells
