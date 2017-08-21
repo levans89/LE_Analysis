@@ -10,7 +10,7 @@ for m = 1:height(plates) % for all plates in this cell line
     plate_maps{m} = [num2str(plates.expt_plate{m}),'.xlsx']; % find the platemap name
 end
 
-for p = 1:height(plates) % for all plates
+for p = 2:height(plates) % for all plates
     
     % 1. Get all inputs for Get_KS_Profiles
     plateID = plates.expt_plate{p};% ID

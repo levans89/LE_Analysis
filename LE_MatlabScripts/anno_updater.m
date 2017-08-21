@@ -11,6 +11,22 @@ plate.drug_categories{r,1} = strrep(plate.drug_categories{r,1}, 'Proteases','Pro
 end
 
 for r = 1:length(plate.drug_categories)
+a = strfind(plate.targets{r,1}, 'JAK');
+if a>=1
+plate.drug_categories{r,1} = 'JAKSTAT' ;
+end
+end
+clear a
+
+for r = 1:length(plate.drug_categories)
+a = strfind(plate.targets{r,1}, 'Integrin');
+if a>=1
+plate.drug_categories{r,1} = 'Cytoskeleton' ;
+end
+end
+clear a
+
+for r = 1:length(plate.drug_categories)
 a = strfind(plate.targets{r,1}, 'HSP (e.g. HSP90)');
 b= strfind(plate.targets{r,1}, 'HSP90');
 if a>=1
@@ -299,5 +315,7 @@ plate.drug_categories{r,1} = 'HSP90' ;
 end
 end
 clear a b
+
+
 
 drug_categories = categories(categorical(plate.drug_categories))';

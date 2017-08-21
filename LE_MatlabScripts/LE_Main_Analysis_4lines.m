@@ -13,7 +13,7 @@ profiles_folder = 'W:\2015_09_HTS_LE\data\profiles';% place to save profiles to 
 profiles_folder_RB = '..\data\profiles_4lines_XRCC5_RB'; % for comparison of ill corr methods on C.A. %
 profiles_folder_NBT = 'W:\2015_09_HTS_LE\data\profiles_NBT';% subset of features used in NBT paper
 qc_folder = 'W:\2015_09_HTS_LE\QC\4lines\stringent';% store any QC analysis Python, Matlab, or manual
-results_folder = 'W:\2015_09_HTS_LE\results\matlab_results\4lines'; % Louise results for 4lines analysis
+results_folder = 'W:\2015_09_HTS_LE\results\matlab_results\4lines\topher'; % Louise results for 4lines analysis
 plate_DB_path ='W:\2015_09_HTS_LE\project_database\'; % directory containing plate database file
 plate_DB = 'Plate_database_latest2.xlsx'; % file describing relationship between compound and experiment plates
 
@@ -114,7 +114,7 @@ plot_opt = plot_opt_ALL;
 for c = 1%:4
     cellplates = plates(plates.CellLine == pORACL{c},:);
     plateIDs = cellplates.expt_plate;
-    plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder,qc_folder);
+    plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder_NBT,qc_folder);
     
     anno_updater;
     
@@ -131,7 +131,7 @@ for c = 1%:4
     is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
     plate3.drug_categories(is_inactive) = {'Nonbioactive'}; % not using Nonbioactive to do the PCA.
     bioactive = Plate2Table(plate3);
-    %writetable(bioactive,fullfile(results_folder,strcat(pORACL{c},'_bioactivepvals_DMSObw_NBT.xlsx')))
+    writetable(bioactive,fullfile(results_folder,strcat(pORACL{c},'_bioactivepvals_DMSObw_NBT.xlsx')))
     
     Visualize_Plate_LE(plate3,plot_opt{:});
     labelpcplot()
@@ -176,7 +176,7 @@ ref_plate = {'reference_plate'};
 for c = 1%:4
 plateaccuracy = cell(6,2);    
 refplates = referenceplates(referenceplates.CellLine== pORACL{c},:);
-for p=1%:height(refplates)
+for p=1:height(refplates)
     plate_IDs = refplates.expt_plate;
     plateIDs = plate_IDs(p);
     plate = Load_Batch_LE(refplates,plateIDs, profiles_folder,qc_folder);
@@ -223,7 +223,7 @@ Accuracies = sortrows(Accuracies,'Accuracy','descend');
 %drug_categories = aw_ref;
 drug_category_strimmer
 
-plates = plates(plates.CellLine=='A549_XRCC5',:);
+cellplates = plates(plates.CellLine=='A549_XRCC5',:);
 plateIDs = cellplates.expt_plate;
 plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder,qc_folder); % note different profiles folder
 
@@ -273,27 +273,31 @@ col_order = {'Cluster','Size','Significance',...
 sort_order = {'Size','Cluster','pathways','targets',...
               'drug_names','concentrations'};
 
-%batches = cell(4,1);
+batches = cell(4,1);
 for c = 1%:4
 plates = plates(plates.CellLine==pORACL{c},:);
 plateIDs = plates.expt_plate;
 batches{c,1} = plateIDs;
 end
 
+clusterplate = {plate}, plate_fda};
+clusterplaten = {'plate'}, 'plate_fda'};
+for p = 1:2
 Nbatches = length(batches);
 cluster_info = cell(Nbatches,1);
 profiles = cell(Nbatches,1);
 tree = cell(Nbatches,1);
-for b = 1:Nbatches
+for b = 1%:Nbatches
     disp(b)
-    plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_NBT,qc_folder);
-    [cluster_info{b}, profiles{b}, tree{b}] = Cluster_Compounds(plate_fda,HCSparas);
+    plate = Load_Batch_LE(plates,plateIDs, profiles_folder_NBT,qc_folder);
+    [cluster_info{b}, profiles{b}, tree{b}] = Cluster_Compounds(clusterplate{p},HCSparas);
     cluster_info{b}.compound = cluster_info{b}.drug_names;
     cluster_info{b} = cluster_info{b}(:,col_order);
-%     [cluster_info{b},idx] = sortrows(cluster_info{b},sort_order); % #
-%     profiles{b} = profiles{b}(idx,:); % #
-%     tree{b} = Update_NodeIDs(tree{b},idx); % #
-end
+    [cluster_info2{b},idx] = sortrows(cluster_info{b},sort_order); % #
+    profiles2{b} = profiles{b}(idx,:); % #
+    tree2{b} = Update_NodeIDs(tree{b},idx); % #
+    writetable(cluster_info{1,1},[results_folder,'\',pORACL{c},clusterplaten{p},'clustering'])
+ end
 
 % Visualize clusters
 batch_to_plot = 1;
@@ -313,7 +317,9 @@ if isempty(clusters_to_color)
 end
 
 PlotPhylogeneticTree(cluster_info{batch_to_plot},tree{batch_to_plot},clusters_to_color);
-%saveas(gcf,strcat(resultsfolder,'clustering'))
+saveas(gcf,[results_folder,'\',cellline{c},clusterplaten{p},'clustering'])
+end
+
 %% Analysis of clusters
 fh = figure;
 ref_cluster = struct();
@@ -338,13 +344,17 @@ for i = 1:length(cluster_info)
     row_totals = sum(num_cpds,2);
     percs = num_cpds./repmat(sum(num_cpds,2),1,size(num_cpds,2));
     
-    % Plot
-    ax(i) = subplot(1,1,i,'Parent',fh);
-    imagesc(percs(:,c_id_sig)),colormap(ax(i),hot),caxis(ax(i),[0,1])
+   
+    % Plot 2
+    ax(i) = subplot(2,1,2,'Parent',fh);
+    %imagesc(percs(:,c_id_sig)),colormap(ax(i),hot),caxis(ax(i),[0,1])
+    imagesc(percs)
+    colormap(ax(i),hot),caxis(ax(i),[0,1])
     ax(i).YTick = 1:length(ref_cluster(i).categories);
     ax(i).YTickLabel = ref_cluster(i).categories;
     ax(i).TickLabelInterpreter = 'none';
     ax(i).XTick = [];
+    ax(i) = subplot(2,1,1,'Parent',fh);
 end
 
 %% Louise Percents
@@ -510,6 +520,8 @@ for b = 1:Nbatches
 %     profiles{b} = profiles{b}(idx,:); % #
 %     tree{b} = Update_NodeIDs(tree{b},idx); % #
 end
+
+writetable(cluster_info{1,1},[results_folder '\cluster_info.xlsx'])
 
 % Visualize clusters
 batch_to_plot = 1;

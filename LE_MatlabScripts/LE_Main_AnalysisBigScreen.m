@@ -76,9 +76,9 @@ batch='2017018_007';
 thesebatchplates = ~ismember(plates.batch,batch);
 plates = plates(thesebatchplates,:);
 
-batch='2017018_009';
-thesebatchplates = ~ismember(plates.batch,batch);
-plates = plates(thesebatchplates,:);
+% batch='2017018_009';
+% thesebatchplates = ~ismember(plates.batch,batch);
+% plates = plates(thesebatchplates,:);
 
 cpdorder='blank';
 thesecpdplates = ~ismember(plates.Cpd_Addition_order,cpdorder);
@@ -183,15 +183,15 @@ plate_cpd_bioactive_T=Plate2Table(plate_cpd_bioactive);
 plate_cpd_T=Plate2Table(plate_cpd);
 plate_ref_bioactive_T = Plate2Table(plate_ref_bioactive);
 
-writetable(plate_cpd_bioactive_T,strcat(results_folder,'screen_cpds_bioactive_008.xlsx'));
+writetable(plate_cpd_bioactive_T,strcat(results_folder,'screen_cpds_bioactive_009.xlsx'));
 
 is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO'));
 plate3.drug_categories(is_inactive) = {'Nonbioactive'}; % not using Nonbioactive to do the PCA.
 bioactive = Plate2Table(plate3);
-writetable(bioactive,fullfile(results_folder,'_bioactivepvals_NBT_005.xlsx'))
+writetable(bioactive,fullfile(results_folder,'_bioactivepvals_NBT_009.xlsx'))
 plot_opt{1,2}{1,12}='Unknown';
 plot_opt_ALL{1,2}{1,35}='Unknown';
-Visualize_Plate_LE(plate_bioactive,plot_opt{:}); % or plot_opt_query -
+Visualize_Plate_LE(plate_bioactive,plot_opt_ALL{:}); % or plot_opt_query -
 labelpcplot()
 % 
 %% Classification Accuracy
@@ -227,7 +227,6 @@ end
 
 % Calc CA for multiple plates together
 plate_IDs = referenceplates.expt_plate;
-plate_IDs = referenceplates.expt_plate([1 3 4],:);
 plate = Load_Batch_LE(referenceplates,plate_IDs, profiles_folder_NBT,qc_folder);
 plate2 = Merge_Time_Points(plate,time_to_use,merge_mode);
 plate2 = Get_Bioactive_Compounds(plate2, paras);
@@ -266,7 +265,7 @@ saveas(gcf,fullfile(results_folder,'FDA'));
 plate_IDs = plates.expt_plate;
 plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_NBT,qc_folder);
 predict_output = Screen_Plates(plate, paras);
-save(fullfile(results_folder,'predict_output.mat'),'predict_output')
+save(fullfile(results_folder,'predict_output2.mat'),'predict_output')
 
 %% Clustering
 % Clustering parameters
@@ -302,7 +301,7 @@ for b = 1:Nbatches
     cluster_info{b}.compound = cluster_info{b}.drug_names;
     cluster_info{b} = cluster_info{b}(:,col_order);
 end
-
+save([results_folder,'cluster_info.mat'],'cluster_info')
 % Visualize clusters
 batch_to_plot = 1;
 clusters_to_color = [];
@@ -322,7 +321,7 @@ if isempty(clusters_to_color)
 end
 
 PlotPhylogeneticTree(cluster_info{batch_to_plot},tree{batch_to_plot},clusters_to_color);
-%saveas(gcf,fullfile(results_folder,batch));
+saveas(gcf,fullfile(results_folder,batch));
 
 %% Analysis of clusters
 fh = figure;

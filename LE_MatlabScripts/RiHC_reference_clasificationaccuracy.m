@@ -1,5 +1,6 @@
-% Selleck Bioactives Feature Comparison XRCCC5
-% Louise Heinrich July 25th 2017 in Altschuler & Wu Lab
+% Feature Comparison RiHC line (pSeg only)
+% Louise Heinrich in Altschuler & Wu Labs
+% August 15th 2017
 
 %% Set Paths
 addpath(genpath('W:\Lab_Analysis\common\plate_annotation')) %plate annotation from labtoolbox
@@ -12,30 +13,13 @@ addpath(genpath('W:\Lab_Analysis\common\image_browser')) % Image_Browser to call
 code_folder = 'W:\2015_09_HTS_LE\Code_LE\';
 profiles_folder = 'W:\2015_09_HTS_LE\data\profiles';% place to save profiles to and load from
 qc_folder = 'W:\2015_09_HTS_LE\QC\bigscreen';% store any QC analysis Python, Matlab, or manual
-results_folder = 'W:\2015_09_HTS_LE\results\feature_sets\'; % Louise results for 4lines analysis
+results_folder = 'W:\2015_09_HTS_LE\results\feature_sets\RIHC'; % Louise results for 4lines analysis
 plate_DB_path ='W:\2015_09_HTS_LE\project_database\'; % directory containing plate database file
 plate_DB = 'Plate_database_latest2.xlsx'; % file describing relationship between compound and experiment plates
 
-% Load Constants
+% Read in plate table for plates of interest
 Exp_DB = readtable(fullfile(plate_DB_path,plate_DB),'Sheet',1); % full table of all plates
-
-year = 2017;
-theseyearplates = ismember(Exp_DB.year,year);
-plates = Exp_DB(theseyearplates,:); % subset 2017 plates
-
-batch='4L2K_8';
-thesebatchplates = ~ismember(plates.batch,batch);
-plates = plates(thesebatchplates,:); % subset 4lines2K plates b1
-
-batch='4L2K_7';
-thesebatchplates = ~ismember(plates.batch,batch);
-plates = plates(thesebatchplates,:);% subset 4lines2K plates b2
-
-cellplates = plates;
-cellplates = cellplates(strcmpi(cellplates.Experiment_,'LE_4'),:);
-cellplates = cellplates(strcmpi(cellplates.CellLine,'A549_XRCC5'),:);
-
-clear thesebatchplates theseyearplates batch Exp_DB plates_a plates_b plates_c year plate_DB_path plate_DB
+cellplates = Exp_DB(strcmpi(Exp_DB.Experiment_,'LE_8'),:); % Select RiHC x Reference set plates 2017018405,403
 
 % Get Analysis Parameters
 % Get plotting options
@@ -43,7 +27,7 @@ getplotoptions() % generate standard plot options
 plot_opt = plot_opt_reference; % specific plot option
 
 %bioactive_paras
-pVal_thr = 10^-6; %10^-6
+pVal_thr = 10^-2; %10^-6
 max_nCtrl = 2500; %2500
 var_pct_to_keep = 0.95; %0.95
 k_fold = 10; %10
@@ -93,11 +77,14 @@ use_all = use_all';
 clear name category_id channel_id w
 clc
 
+%% Generate Full Profiles
+cellline = 'A549_RiHC';
+LE_Gen_Profiles(cellplates,cellline,profiles_folder);
 %% Choose Feature Set
+
 featureset ={NBT,use_2ch,use_all}; % use_2ch use_all NBT
 featurenames = {'NBT','use_2ch','use_all'};
-%f=2
-for f = 1:3
+for f = 1
     % Calc. Bioactivity
     % Pick 6 class or 10 class model for classification accuracy
     aw_ref = {'DMSO','Actin','AuroraB','DNA','ER','HDAC','HSP90','MT','PLK','Proteasome','mTOR'};
@@ -106,8 +93,7 @@ for f = 1:3
     % Import profiles
     plateIDs = cellplates.expt_plate;
     plate = Load_Batch_LE(cellplates,plateIDs, profiles_folder,qc_folder);
-    % Update Annotation
-    anno_updater
+    
     % Subset features
     plate.feaInfo.name = plate.feaInfo.name(featureset{f});
     plate.feaInfo.channel_id = plate.feaInfo.channel_id(featureset{f});
@@ -115,37 +101,32 @@ for f = 1:3
     for w = 1:size(plate.profiles,1)
         plate.profiles{w,1} = plate.profiles{w,1}(featureset{f});
     end
+    
     % Calc CA % for all ref plates pooled together
     plate2 = Merge_Time_Points(plate,paras.screen.time_to_use,paras.screen.merge_mode); % legacy
     [~,plate3,~,~,~,~] = Get_Bioactive_Compounds(plate2, paras);% Charles function - bioactivity
-    %[plate_bioactive,plate,plate_ref_bioactive,plate_ref,plate_cpd_bioactive,plate_cpd]
+    %%% outputs : [plate_bioactive,plate,plate_ref_bioactive,plate_ref,plate_cpd_bioactive,plate_cpd]
     is_inactive = plate3.bioactive_pVals>=pVal_thr & (~strcmp(plate3.drug_categories,'DMSO')); %inactive cpds
     plate3.drug_categories(is_inactive) = {'Nonbioactive'}; % not using Nonbioactive to do the PCA.
     bioactive = Plate2Table(plate3);% make table
     clear plate2 is_inactive
-    writetable(bioactive,[results_folder, '\', 'XRCC5','bioactive_2K'])
+    writetable(bioactive,[results_folder, '\', cellline,featurenames{f},'_bioactive'])
     
     % Bioactivity Percents
-    XRCC5_bioactive = bioactive;
-    XRCC5_bioactive.cpd_usage = categorical(XRCC5_bioactive.cpd_usage);
-    XRCC5_bioactive.Properties.VariableNames{7} = 'XRCC5_bioactive_pVals';
-    XRCC5_b_query = XRCC5_bioactive(XRCC5_bioactive.cpd_usage =='query_cpd',:);
-    XRCC5_b_reference = XRCC5_bioactive(XRCC5_bioactive.cpd_usage =='reference_cpd',:);
-    XRCC5_b_remainders = XRCC5_bioactive(XRCC5_bioactive.cpd_usage ~='reference_cpd' & XRCC5_bioactive.cpd_usage ~='query_cpd',:);
-    percents.bioactive.XRCC5 = sum(XRCC5_b_query.XRCC5_bioactive_pVals <= pVal_thr)/height(compound_IDs)*100;
-    percents.ref.XRCC5 = sum(XRCC5_b_reference.XRCC5_bioactive_pVals <= pVal_thr)/height(XRCC5_b_reference)*100;
-    percents_summary = vertcat(struct2table(percents.ref),struct2table(percents.bioactive));
-    percents_summary.Properties.RowNames{1}='Reference';
-    percents_summary.Properties.RowNames{2}='Selleck 2K';
-    display(percents_summary)
-    writetable(percents_summary,[results_folder,'\',featurenames{f},'percents_bwDMSO.xlsx'])
+    bioactive.cpd_usage = categorical(bioactive.cpd_usage);
+    bioactive.Properties.VariableNames{7} = 'bioactive_pVals';
+    reference = bioactive(bioactive.cpd_usage =='reference_cpd',:);
+    percents.ref = sum(reference.bioactive_pVals <= pVal_thr)/height(reference)*100;
+    %percents_summary = struct2table(percents.ref);
+    %percents_summary.Properties.RowNames{1}='Reference';
+    display(percents.ref)
+    %writetable(percents.ref,[results_folder,'\',featurenames{f},'percents_bwDMSO.xlsx'])
     
     % PCA FDA Visualisation
-    % PCA
     % Plot PCA of all plates
     Visualize_Plate_LE(plate3,plot_opt_ALL{:});
     labelpcplot()
-    saveas(gcf,[results_folder,'\','XRCC5',featurenames{f},'PCA','_2K']); % change naming by featureset!
+    saveas(gcf,[results_folder,'\',cellline,featurenames{f},'PCA','_2K']); % change naming by featureset!
     
     % Calc FDA space
     % Get reference compounds
@@ -163,7 +144,7 @@ for f = 1:3
     
     % Project FDA
     Visualize_Plate(plate_fda,plot_opt_ALL{:});
-    saveas(gcf,[results_folder,'\','XRCC5',featurenames{f},'FDA','_2K']);
+    saveas(gcf,[results_folder,'\',cellline,featurenames{f},'FDA']);
     
     
     % Clustering & Cluster Analysis
@@ -183,7 +164,7 @@ for f = 1:3
     Nbatches = length(batches);
     cluster_info = cell(Nbatches,1);
     profiles = cell(Nbatches,1);
-    tree = cell(Nbatches,1);    
+    tree = cell(Nbatches,1);
     
     % Perform HC
     for b = 1:Nbatches
@@ -212,7 +193,7 @@ for f = 1:3
     
     PlotPhylogeneticTree(cluster_info{batch_to_plot},tree{batch_to_plot},clusters_to_color);
     save([results_folder,'XRCC5',featurenames{f},'clustering','_2K'],'cluster_info')
-    saveas(gcf,[results_folder,'\','XRCC5',featurenames{f},'clustering','_2K'])
+    saveas(gcf,[results_folder,'\',cellline,featurenames{f},'clustering'])
     
     % Cluster Purity
     % Analysis of clusters - what percent of a drug class is in a cluster
@@ -239,13 +220,18 @@ for f = 1:3
         percs = num_cpds./repmat(sum(num_cpds,2),1,size(num_cpds,2));
         
         % Plot figure
-        ax(i) = subplot(1,1,i,'Parent',fh);
-        imagesc(percs(:,c_id_sig)),colormap(ax(i),hot),caxis(ax(i),[0,1])
-        ax(i).YTick = 1:length(ref_cluster(i).categories);
-        ax(i).YTickLabel = ref_cluster(i).categories;
+        ax(i) = subplot(2,1,1,'Parent',fh);
+        dendrogram(tree{1,1}(1,1))
+%       imagesc(percs(:,c_id_sig)),colormap(ax(i),hot),caxis(ax(i),[0,1])
+        subplot(2,1,2,'Parent',fh)        
+        imagesc(percs)
+
+        ax(i).YTick = 1:length(ref_cluster.categories);
+        ax(i).YTickLabel = ref_cluster.categories;
         ax(i).TickLabelInterpreter = 'none';
+        
     end
     
-    saveas(gcf,[results_folder,'\','XRCC5',featurenames{f},'cluster_purity','_2K'])
-    
+    saveas(gcf,[results_folder,'\',cellline,featurenames{f},'cluster_purity'])
 end
+
