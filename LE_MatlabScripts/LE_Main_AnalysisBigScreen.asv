@@ -12,7 +12,7 @@ addpath(genpath('W:\Lab_Analysis\common\image_browser')) % Image_Browser to call
 code_folder = 'W:\2015_09_HTS_LE\Code_LE\';
 profiles_folder = 'W:\2015_09_HTS_LE\data\profiles';% place to save profiles to and load from
 profiles_folder_NBT = 'W:\2015_09_HTS_LE\data\profiles_NBT';% subset of features used in NBT paper
-qc_folder = 'W:\2015_09_HTS_LE\QC\carryover';% store any QC analysis Python, Matlab, or manual
+qc_folder = 'W:\2015_09_HTS_LE\QC\';% store any QC analysis Python, Matlab, or manual
 results_folder = 'W:\2015_09_HTS_LE\results\matlab_results\bigscreen\'; % Louise results for 4lines analysis
 plates_folder = 'W:\2015_09_HTS_LE\plates\'
 plate_DB_path ='W:\2015_09_HTS_LE\project_database\'; % directory containing plate database file
@@ -130,7 +130,7 @@ end
 %plot_opt{1,2}{1,12}= 'Unknown';
 
 %bioactive_paras
-pVal_thr = 10^-6; %10^-6
+pVal_thr = 10^-3; %10^-6
 max_nCtrl = 2500; %2500
 var_pct_to_keep = 0.95; %0.95
 k_fold = 10; %10
@@ -172,9 +172,9 @@ plates.CellLine = categorical(plates.CellLine);
 
 %% Specify Bioactives
 
-plate_IDs = plates.expt_plate(19);
+plate_IDs = plates.expt_plate;
 %plate_IDs = referenceplates.expt_plate;
-plate = Load_Batch_LE(plates(19,:),plate_IDs, profiles_folder_NBT,qc_folder);
+plate = Load_Batch_LE(plates,plate_IDs, profiles_folder_NBT,qc_folder);
 checknumplatewells()
 plate = Merge_Time_Points(plate,time_to_use,merge_mode);
 [plate_bioactive,plate3,plate_ref_bioactive,plate_ref,plate_cpd_bioactive,plate_cpd] = Get_Bioactive_Compounds(plate, paras);
@@ -187,7 +187,7 @@ plate_ref_T=Plate2Table(plate_ref);
 plate_cpd_bioactive_T=Plate2Table(plate_cpd_bioactive);
 plate_cpd_T=Plate2Table(plate_cpd);
 plate_ref_bioactive_T = Plate2Table(plate_ref_bioactive);
-%%
+
 writetable(plate_cpd_bioactive_T,[results_folder,plates.batch{1},'.xlsx']);
 
 platenamer(plate_T)

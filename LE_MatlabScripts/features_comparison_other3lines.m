@@ -13,7 +13,7 @@ addpath(genpath('W:\Lab_Analysis\common\image_browser')) % Image_Browser to call
 code_folder = 'W:\2015_09_HTS_LE\Code_LE\';
 profiles_folder = 'W:\2015_09_HTS_LE\data\profiles';% place to save profiles to and load from
 qc_folder = 'W:\2015_09_HTS_LE\QC\bigscreen';% store any QC analysis Python, Matlab, or manual
-results_folder = 'W:\2015_09_HTS_LE\results\feature_sets\'; % Louise results for 4lines analysis
+results_folder = 'W:\2015_09_HTS_LE\results\feature_sets\20170901\'; % Louise results for 4lines analysis
 plate_DB_path ='W:\2015_09_HTS_LE\project_database\'; % directory containing plate database file
 plate_DB = 'Plate_database_latest2.xlsx'; % file describing relationship between compound and experiment plates
 

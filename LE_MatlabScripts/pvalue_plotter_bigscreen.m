@@ -1,23 +1,24 @@
 %% Set P Val Thr
-pVal_thr            = 10^-6;
+pVal_thr            = 10^-3;
 
 %% set categorical
-bioactive.cpd_usage = categorical(bioactive.cpd_usage);
+plate_all.cpd_usage = categorical(plate_all.cpd_usage);
 clc
-query = bioactive(bioactive.cpd_usage =='query_cpd',:);
-reference =bioactive(bioactive.cpd_usage =='reference_cpd',:);
-remainders = bioactive(bioactive.cpd_usage ~='reference_cpd' & bioactive.cpd_usage ~='query_cpd',:);
+query = plate_all(plate_all.cpd_usage =='query_cpd',:);
+reference =plate_all(plate_all.cpd_usage =='reference_cpd',:);
+remainders = plate_all(plate_all.cpd_usage ~='reference_cpd' & plate_all.cpd_usage ~='query_cpd',:);
 
 %% Calculate Bioactive Percentages
 percents.bioactive = sum(query.bioactive_pVals <= pVal_thr)/height(compound_IDs)*100; 
 percents.ref = sum(reference.bioactive_pVals <= pVal_thr)/height(reference)*100;
 
-percents_summary = vertcat(struct2table(percents.ref),struct2table(percents.bioactive));
-percents_summary.Properties.RowNames{1}='Reference';
-percents_summary.Properties.RowNames{2}='ChemBridgeV2';
+%percents_summary = vertcat(struct2table(percents.ref),struct2table(percents.bioactive));
+%percents_summary.Properties.RowNames{1}='Reference';
+%percents_summary.Properties.RowNames{2}='ChemBridgeV2';
 
-display(percents_summary)
-writetable(percents_summary,fullfile(results_folder,'percents.xlsx'))
+display(percents.ref)
+display(percents.bioactive)
+%writetable(percents_summary,fullfile(results_folder,'percents.xlsx'))
 
 %% calculate intersects and unions of query hits
 % get hit compounds
@@ -38,8 +39,8 @@ writetable(counts,fullfile(results_folder,'counts.xlsx'));
 %% Plot P Values for all Compounds across the dataset
 figure()
 hold on
-bioactive = sortrows(bioactive,'bioactive_pVals','descend');
-plot(bioactive.bioactive_pVals,'LineWidth',1)
+plate_all = sortrows(plate_all,'bioactive_pVals','descend');
+plot(plate_all.bioactive_pVals,'LineWidth',1)
 xlabel('P Values All Bioactive');
 ylabel('P Value');
 set(gca,'YScale','log')
@@ -52,8 +53,8 @@ plateIDs = bigscreen
 batched = horzcat(plateIDs.expt_plate,plateIDs.batch,plateIDs.plate_type)
 display(batched)
 for a = 1:height(plateIDs)
-    bioactive.plateIDs = categorical(bioactive.plateIDs);
-    pVals = bioactive(bioactive.plateIDs == plateIDs.expt_plate{a,1},:);
+    plate_all.plateIDs = categorical(plate_all.plateIDs);
+    pVals = plate_all(plate_all.plateIDs == plateIDs.expt_plate{a,1},:);
     pVals = sortrows(pVals,'bioactive_pVals','ascend');
     plot(pVals{:,7})
     hold on

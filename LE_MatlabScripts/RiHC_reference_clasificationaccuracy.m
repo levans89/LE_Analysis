@@ -27,7 +27,7 @@ getplotoptions() % generate standard plot options
 plot_opt = plot_opt_reference; % specific plot option
 
 %bioactive_paras
-pVal_thr = 10^-2; %10^-6
+pVal_thr = 10^-6; %10^-6
 max_nCtrl = 2500; %2500
 var_pct_to_keep = 0.95; %0.95
 k_fold = 10; %10

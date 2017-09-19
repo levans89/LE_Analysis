@@ -1,7 +1,7 @@
-function [] = LE_Gen_Profiles(currexp,cellline,profiles_folder)
+function [] = LE_Gen_ProfilesBigScreen(plates,profiles_folder)
 
 paras = Set_Paras(); % set parameters (path,bioactive,screen,cluster)
-plates = currexp(currexp.CellLine==cellline,:); %select cell line
+%plates = currexp(currexp.CellLine==cellline,:); %select cell line
 plate_maps_folder = paras.path.plate_maps; % where to find plate maps
 plate_maps = cell(height(plates),1); % preallocate
 for m = 1:height(plates) % for all plates in this cell line

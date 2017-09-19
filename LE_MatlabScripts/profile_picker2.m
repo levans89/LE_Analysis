@@ -1,10 +1,9 @@
-clear profiles2 profiles
+clear profiles2
 
 s = 1
-f = 42
+f = length(profiles)
 
 for p=s:f 
-    profiles{p,:} = bioactive4lines.bioactivity_tables5{1,1}.profiles{p}
     profiles2(p,:) = profiles{p,1};
 end
 

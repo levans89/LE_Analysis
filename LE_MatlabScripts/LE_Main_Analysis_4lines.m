@@ -13,7 +13,7 @@ profiles_folder = 'W:\2015_09_HTS_LE\data\profiles';% place to save profiles to 
 profiles_folder_RB = '..\data\profiles_4lines_XRCC5_RB'; % for comparison of ill corr methods on C.A. %
 profiles_folder_NBT = 'W:\2015_09_HTS_LE\data\profiles_NBT';% subset of features used in NBT paper
 qc_folder = 'W:\2015_09_HTS_LE\QC\4lines\stringent';% store any QC analysis Python, Matlab, or manual
-results_folder = 'W:\2015_09_HTS_LE\results\matlab_results\4lines\topher'; % Louise results for 4lines analysis
+results_folder = 'W:\2015_09_HTS_LE\results\TOPHER_FINAL';
 plate_DB_path ='W:\2015_09_HTS_LE\project_database\'; % directory containing plate database file
 plate_DB = 'Plate_database_latest2.xlsx'; % file describing relationship between compound and experiment plates
 
@@ -43,10 +43,9 @@ clear theseyearplates thesebatchplates thesereferenceplates
 
 %% Generate Profiles
 % Generate profile for full feature set
-LE_Gen_Profiles(plates,'A549_XRCC5',profiles_folder)
-LE_Gen_Profiles(plates,'A549_SET',profiles_folder)
-LE_Gen_Profiles(plates,'A549_S100A11',profiles_folder)
-LE_Gen_Profiles(plates,'A549_NQO1',profiles_folder)
+for p = 1:height(pORACL)   
+    LE_Gen_Profiles(plates,pORACL{p},profiles_folder)
+end
 
 % Subset Profiles to NBT features
 for p = 1:height(plates)
@@ -280,8 +279,8 @@ plateIDs = plates.expt_plate;
 batches{c,1} = plateIDs;
 end
 
-clusterplate = {plate}, plate_fda};
-clusterplaten = {'plate'}, 'plate_fda'};
+clusterplate = {plate}, {plate_fda};
+clusterplaten = {'plate'}, {'plate_fda'};
 for p = 1:2
 Nbatches = length(batches);
 cluster_info = cell(Nbatches,1);
@@ -296,7 +295,7 @@ for b = 1%:Nbatches
     [cluster_info2{b},idx] = sortrows(cluster_info{b},sort_order); % #
     profiles2{b} = profiles{b}(idx,:); % #
     tree2{b} = Update_NodeIDs(tree{b},idx); % #
-    writetable(cluster_info{1,1},[results_folder,'\',pORACL{c},clusterplaten{p},'clustering'])
+    %writetable(cluster_info{1,1},[results_folder,'\',pORACL{c},clusterplaten{p},'clustering'])
  end
 
 % Visualize clusters
